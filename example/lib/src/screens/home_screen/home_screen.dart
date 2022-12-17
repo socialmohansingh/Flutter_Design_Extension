@@ -9,7 +9,6 @@ import 'package:example/src/screens/icons_screen/icons_screen.dart';
 import 'package:example/src/screens/opacity_screen/opacity_screen.dart';
 import 'package:example/src/screens/spacing_screen/spacing_screen.dart';
 import 'package:example/src/screens/typography_screen/typography_screen.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

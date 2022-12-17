@@ -2,7 +2,7 @@ import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:flutter_design_extension/src/components/text_fields/components/base_design_text_field.dart';
 import 'package:flutter_design_extension/src/components/text_fields/components/design_text_field_container.dart';
 import 'package:flutter_design_extension/src/components/text_fields/components/design_text_field_prefix.dart';
-import 'package:flutter_design_extension/src/components/text_fields/components/chardonnay_text_field_suffix.dart';
+import 'package:flutter_design_extension/src/components/text_fields/components/design_text_field_suffix.dart';
 import 'package:flutter/material.dart';
 
 enum DesignTextFieldSuffixType { obscure, removeText, dropDown }
@@ -147,7 +147,7 @@ class _DesignTextFieldState extends State<DesignTextField> {
         return Icons.arrow_drop_down;
       default:
         throw UnimplementedError(
-            'No case handler found for ChardonnayTextFieldSuffixType.$suffixType');
+            'No case handler found for DesignTextFieldSuffixType.$suffixType');
     }
   }
 
@@ -169,7 +169,7 @@ class _DesignTextFieldState extends State<DesignTextField> {
         return null;
       default:
         throw UnimplementedError(
-            'No case handler found for ChardonnayTextFieldSuffixType.$suffixType');
+            'No case handler found for DesignTextFieldSuffixType.$suffixType');
     }
   }
 

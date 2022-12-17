@@ -12,7 +12,6 @@ import 'package:example/src/screens/components_screen/widget_showcase/snack_bars
 import 'package:example/src/screens/components_screen/widget_showcase/tags/tags_screen.dart';
 import 'package:example/src/screens/components_screen/widget_showcase/text_fields/text_fields_widget_showcase_screen.dart';
 import 'package:example/src/screens/components_screen/widgets/showcase_list_item.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 /// Holds all the showcase screens for all the different widgets.

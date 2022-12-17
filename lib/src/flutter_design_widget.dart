@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
-import 'package:flutter_design_extension/src/localisation/localization_provider.dart';
+import 'package:flutter_design_extension/src/localisation/app_design_provider.dart';
 import 'package:flutter_design_extension/src/localisation/localize.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:localization/localization.dart';

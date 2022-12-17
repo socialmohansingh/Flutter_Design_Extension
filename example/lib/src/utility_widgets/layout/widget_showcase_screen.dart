@@ -1,5 +1,5 @@
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_design_extension/flutter_design_extension.dart';
 
 /// This class should be extended when creating showcase screens
 /// for specific widgets to promote same style across the example app.

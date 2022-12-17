@@ -1,4 +1,4 @@
-/// Provides chardonnay snackbar variants.
+/// Provides design snackbar variants.
 
 enum DesignSnackBarVariant {
   neutral,

@@ -15,7 +15,7 @@ class CoreSnackBar extends SnackBar {
   /// Duration unit is default set to 'seconds' only.
   final int snackBarDuration;
 
-  /// [theme] uses chardonnay design theme.
+  /// [theme] uses design design theme.
   final DesignTokensThemeExtension theme;
 
   /// [variant] is snackbar variant for snackbars types.

@@ -1,5 +1,5 @@
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_design_extension/flutter_design_extension.dart';
 
 class SlidingFromBottomScreen extends StatelessWidget {
   const SlidingFromBottomScreen({super.key});

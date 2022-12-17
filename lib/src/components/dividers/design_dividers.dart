@@ -1,4 +1,4 @@
-export 'chardonnay_divider_small.dart';
-export 'chardonnay_divider_large.dart';
-export 'chardonnay_divider_medium.dart';
-export 'types/chardonnay_divider_orientation.dart';
+export 'design_divider_small.dart';
+export 'design_divider_large.dart';
+export 'design_divider_medium.dart';
+export 'types/design_divider_orientation.dart';

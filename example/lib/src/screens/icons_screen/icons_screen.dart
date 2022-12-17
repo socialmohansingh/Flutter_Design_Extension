@@ -1,6 +1,5 @@
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:example/src/util/showcase_extensions.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class IconWithName {
@@ -33,7 +32,7 @@ class IconsScreen extends StatelessWidget {
             children: [
               SizedBox(height: theme.spacings.spacing24),
               Text(
-                'ChardonnayIconsLTR',
+                'DesignIconsLTR',
                 style: theme.textStyles.secondary_500,
               ),
               SizedBox(height: theme.spacings.spacing24),

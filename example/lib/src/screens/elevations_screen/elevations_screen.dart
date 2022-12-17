@@ -1,6 +1,5 @@
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:example/src/screens/elevations_screen/widgets/elevation_card.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class ElevationsScreen extends StatelessWidget {

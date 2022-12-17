@@ -1,5 +1,5 @@
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_design_extension/flutter_design_extension.dart';
 
 class SlidingFromRightScreen extends StatelessWidget {
   const SlidingFromRightScreen({super.key});

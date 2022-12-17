@@ -1,7 +1,7 @@
 import 'package:flutter_design_extension/src/components/loaders/type/design_loader_type.dart';
 import 'package:flutter/material.dart';
 
-/// Implements the chardonnay progress loader.
+/// Implements the design progress loader.
 ///
 /// [DesignLoaderType.regular] can be used on loading screen level
 /// whereas [DesignLoaderType.small] can be used on loading button level.

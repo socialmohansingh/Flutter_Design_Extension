@@ -1,6 +1,5 @@
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:example/src/utility_widgets/layout/colors_section.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class OpacityScreen extends StatelessWidget {

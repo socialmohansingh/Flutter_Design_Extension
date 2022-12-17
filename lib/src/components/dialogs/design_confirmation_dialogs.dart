@@ -1,1 +1,1 @@
-export 'core/chardonnay_confirmation_dialog.dart';
+export 'core/design_confirmation_dialog.dart';

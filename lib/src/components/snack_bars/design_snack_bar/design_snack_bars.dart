@@ -2,7 +2,7 @@ import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:flutter_design_extension/src/components/snack_bars/core_snack_bar/core_snack_bar.dart';
 import 'package:flutter/material.dart';
 
-/// Chardonnay snack bars class.
+/// design snack bars class.
 ///
 /// It is used for showing floating snackbars.
 ///
@@ -12,7 +12,7 @@ class DesignSnackBars {
   /// Shows the snack bar.
   ///
   /// This function takes [snackBarText] as primary content, [variant] uses
-  /// chardonnay snackbars type, [context] for showing snackbar on particular
+  /// design snackbars type, [context] for showing snackbar on particular
   /// screen, [duration] to display snackbar for amount of time, [actionLabel]
   /// is use for snackbar action title & [onPressedAction] is used for callback
   /// function for action based snackbar.

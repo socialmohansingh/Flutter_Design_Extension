@@ -1,7 +1,6 @@
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:example/src/screens/typography_screen/widgets/text_style_list_item.dart';
 import 'package:example/src/util/showcase_extensions.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class TypographyScreen extends StatelessWidget {

@@ -19,7 +19,7 @@ class DesignRadioButton<T> extends StatelessWidget {
       super.key});
 
   // TODO: there is a weird Flutter bug. The on tap ripple does not work if the widget is inside the Dismissible widget.
-  // TODO: This bug can be recreated using the default Flutter Radio widget, so the issue is not specific to ChardonnayRadioButton
+  // TODO: This bug can be recreated using the default Flutter Radio widget, so the issue is not specific to DesignRadioButton
   @override
   Widget build(BuildContext context) {
     final theme = context.theme;

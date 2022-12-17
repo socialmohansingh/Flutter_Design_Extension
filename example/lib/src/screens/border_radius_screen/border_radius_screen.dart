@@ -1,6 +1,5 @@
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:example/src/screens/border_radius_screen/widgets/border_radius_card.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class BorderRadiusScreen extends StatelessWidget {

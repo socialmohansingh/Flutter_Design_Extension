@@ -5,3 +5,5 @@ export 'src/design_tokens/icons/icons.dart';
 export 'src/design_tokens/typography/typography.dart';
 export 'src/utils/context_extension.dart';
 export 'src/flutter_design_widget.dart';
+export 'src/components/screens/custom_scaffold.dart';
+export 'src/components/screens/device_screen.dart';

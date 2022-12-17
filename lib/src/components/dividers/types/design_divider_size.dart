@@ -2,7 +2,7 @@ const double _dividerSmallHeight = 1;
 const double _dividerMediumHeight = 8;
 const double _dividerLargeHeight = 16;
 
-/// Chardonnay Divider with 3 size variations, small (1dp), medium (8dp) & large (16dp).
+/// design Divider with 3 size variations, small (1dp), medium (8dp) & large (16dp).
 enum DesignDividerSize {
   /// Enum 'small' used for divider when required divider size is 1dp
   small(height: _dividerSmallHeight),

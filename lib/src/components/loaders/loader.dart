@@ -1,2 +1,2 @@
-export 'component/chardonnay_loader.dart';
-export 'type/chardonnay_loader_type.dart';
+export 'component/design_loader.dart';
+export 'type/design_loader_type.dart';

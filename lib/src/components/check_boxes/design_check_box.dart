@@ -1,7 +1,7 @@
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:flutter/material.dart';
 
-const double _chardonnayCheckBoxCheckMarkSide = 24;
+const double _designCheckBoxCheckMarkSide = 24;
 
 class DesignCheckBox extends StatelessWidget {
   final bool? value;
@@ -28,8 +28,8 @@ class DesignCheckBox extends StatelessWidget {
       child: Container(
           padding: EdgeInsets.all(theme.spacings.spacing8),
           child: SizedBox(
-            height: _chardonnayCheckBoxCheckMarkSide,
-            width: _chardonnayCheckBoxCheckMarkSide,
+            height: _designCheckBoxCheckMarkSide,
+            width: _designCheckBoxCheckMarkSide,
             child: Icon(
               _iconData(theme, value),
               color: _iconColor(enabled, theme, value),

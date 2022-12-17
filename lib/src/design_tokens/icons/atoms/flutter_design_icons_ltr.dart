@@ -2,7 +2,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_design_extension/src/design_tokens/icons/atoms/icon_font_base_interface.dart';
 import 'package:flutter_design_extension/src/utils/flutter_design_constants.dart';
 
-const String _kFontFam = 'ChardonnayIconsLTR';
+const String _kFontFam = 'DesignIconsLTR';
 const String _kFontPkg = FlutterDesignConstants.packageName;
 
 IconData _getIconData(int codePoint) => IconData(

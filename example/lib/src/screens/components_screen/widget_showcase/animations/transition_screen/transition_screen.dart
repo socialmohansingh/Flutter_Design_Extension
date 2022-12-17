@@ -1,7 +1,6 @@
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:example/src/screens/components_screen/widget_showcase/animations/transition_screen/sliding_from_bottom_screen.dart';
 import 'package:example/src/screens/components_screen/widget_showcase/animations/transition_screen/sliding_from_right_screen.dart';
-import 'package:example/src/utility_widgets/scaffold/custom_scaffold.dart';
 import 'package:flutter/material.dart';
 
 class TransitionScreen extends StatelessWidget {
