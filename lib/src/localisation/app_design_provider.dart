@@ -6,7 +6,9 @@ import 'package:provider/provider.dart';
 
 class AppDesign extends ChangeNotifier {
   final List<Localize> _languages;
-  AppDesign(this._languages);
+  Brand _brand;
+
+  AppDesign(this._languages, this._brand);
 
   static theme(BuildContext context) {
     return Provider.of<AppDesign>(context);
@@ -14,7 +16,6 @@ class AppDesign extends ChangeNotifier {
 
   ThemeMode themeMode = ThemeMode.system;
   Localize? _lang;
-  Brand _brand = DefaultBrand();
 
   Brand get brand {
     return _brand;

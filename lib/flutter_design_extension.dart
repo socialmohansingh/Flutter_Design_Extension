@@ -7,3 +7,5 @@ export 'src/utils/context_extension.dart';
 export 'src/flutter_design_widget.dart';
 export 'src/components/screens/custom_scaffold.dart';
 export 'src/components/screens/device_screen.dart';
+export 'src/localisation/app_design_provider.dart';
+export 'src/localisation/localize.dart';
