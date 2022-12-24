@@ -13,7 +13,7 @@ class FlutterDesignShowcaseApp extends StatelessWidget {
       create: (_) => ThemeConfigBloc(),
       child: BlocBuilder<ThemeConfigBloc, ThemeConfigState>(
         builder: (context, state) {
-          return const FlutterDesignApp(
+          return FlutterDesignApp(
             home: HomeScreen(),
           );
         },

@@ -50,6 +50,14 @@ class _FlutterDesignAppState extends State<FlutterDesignApp> {
             supportedLocales: design.supportedLocales,
             debugShowCheckedModeBanner: false,
             theme: ThemeData(
+              tabBarTheme: TabBarTheme(
+                labelColor:
+                    design.brand.getColorTokens(design.isDarkMode).brand.main,
+                unselectedLabelColor: design.brand
+                    .getColorTokens(design.isDarkMode)
+                    .brand
+                    .secondary,
+              ),
               extensions: [
                 DesignTokensThemeExtension.initWithBrandAndTextDirection(
                   brand: design.brand,
