@@ -2,6 +2,7 @@ import 'dart:ui';
 
 class ColorBrand {
   final Color main;
+  final Color? background;
   final Color dark;
   final Color secondary;
 
@@ -9,6 +10,7 @@ class ColorBrand {
     required this.main,
     required this.dark,
     required this.secondary,
+    this.background,
   });
 
   ColorBrand lerp(ColorBrand? other, double t) {

@@ -4,17 +4,19 @@ import 'package:flutter/material.dart';
 class CustomScaffold extends StatelessWidget {
   final String title;
   final Widget body;
-  final bool showThemeConfigActionItem;
-  final bool closable;
   final Color? alternativeBackgroundColor;
+  final Widget? leading;
+  final List<Widget> actions;
+  final PreferredSizeWidget? customAppBar;
 
   const CustomScaffold({
     required this.body,
+    this.leading,
+    this.actions = const [],
     this.title = '',
-    this.showThemeConfigActionItem = false,
-    this.closable = false,
-    super.key,
     this.alternativeBackgroundColor,
+    this.customAppBar,
+    super.key,
   });
 
   @override
@@ -22,8 +24,23 @@ class CustomScaffold extends StatelessWidget {
     final theme = context.theme;
 
     return Scaffold(
-      backgroundColor: alternativeBackgroundColor ?? theme.colors.neutral.white,
+      backgroundColor: alternativeBackgroundColor ??
+          theme.colors.brand.background ??
+          theme.colors.neutral.white,
       body: body,
+      appBar: customAppBar ??
+          AppBar(
+            backgroundColor:
+                theme.colors.brand.background ?? theme.colors.brand.main,
+            title: Text(
+              title,
+              style: theme.textStyles.caption_400.copyWith(
+                color: theme.colors.brand.main,
+              ),
+            ),
+            leading: leading,
+            actions: actions,
+          ),
     );
   }
 }
