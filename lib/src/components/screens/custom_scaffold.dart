@@ -30,6 +30,9 @@ class CustomScaffold extends StatelessWidget {
       body: body,
       appBar: customAppBar ??
           AppBar(
+            foregroundColor: theme.colors.brand.background != null
+                ? theme.colors.brand.main
+                : theme.colors.neutral.white,
             backgroundColor:
                 theme.colors.brand.background ?? theme.colors.brand.main,
             title: Text(
