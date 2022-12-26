@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
   final Widget title;
+  final bool centerTitle;
   final double elevation;
   final Widget body;
   final Color? alternativeBackgroundColor;
@@ -13,6 +14,7 @@ class CustomScaffold extends StatelessWidget {
   const CustomScaffold({
     required this.body,
     this.elevation = 0.5,
+    this.centerTitle = true,
     this.leading,
     this.actions = const [],
     this.title = const Text(''),
@@ -33,6 +35,7 @@ class CustomScaffold extends StatelessWidget {
       appBar: customAppBar ??
           AppBar(
             elevation: elevation,
+            centerTitle: centerTitle,
             foregroundColor: theme.colors.brand.background != null
                 ? theme.colors.brand.main
                 : theme.colors.neutral.white,
