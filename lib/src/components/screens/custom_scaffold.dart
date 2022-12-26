@@ -2,7 +2,7 @@ import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:flutter/material.dart';
 
 class CustomScaffold extends StatelessWidget {
-  final String title;
+  final Widget title;
   final double elevation;
   final Widget body;
   final Color? alternativeBackgroundColor;
@@ -15,7 +15,7 @@ class CustomScaffold extends StatelessWidget {
     this.elevation = 0.5,
     this.leading,
     this.actions = const [],
-    this.title = '',
+    this.title = const Text(''),
     this.alternativeBackgroundColor,
     this.customAppBar,
     super.key,
@@ -38,12 +38,7 @@ class CustomScaffold extends StatelessWidget {
                 : theme.colors.neutral.white,
             backgroundColor:
                 theme.colors.brand.background ?? theme.colors.brand.main,
-            title: Text(
-              title,
-              style: theme.textStyles.caption_400.copyWith(
-                color: theme.colors.brand.main,
-              ),
-            ),
+            title: title,
             leading: leading,
             actions: actions,
           ),
