@@ -78,7 +78,7 @@ class ComponentsScreen extends StatelessWidget {
     final theme = context.theme;
 
     return CustomScaffold(
-      title: 'Components',
+      title: const Text('Components'),
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: theme.spacings.spacing16,

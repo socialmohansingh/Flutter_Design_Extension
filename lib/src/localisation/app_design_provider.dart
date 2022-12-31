@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter_design_extension/src/design_tokens/colors/colors.dart';
-import 'package:flutter_design_extension/src/localisation/localize.dart';
+import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:provider/provider.dart';
 
-class AppDesign extends ChangeNotifier {
+class AppDesign with ChangeNotifier {
   final List<Localize> _languages;
   Brand _brand;
 
   AppDesign(this._languages, this._brand);
-
-  static theme(BuildContext context) {
-    return Provider.of<AppDesign>(context);
-  }
 
   ThemeMode themeMode = ThemeMode.system;
   Localize? _lang;
@@ -63,5 +58,19 @@ class AppDesign extends ChangeNotifier {
   void updateBrand(Brand brand) {
     _brand = brand;
     notifyListeners();
+  }
+
+  void reloadWidgets() {
+    notifyListeners();
+  }
+}
+
+extension AppDesignProvider on BuildContext {
+  AppDesign get appDesignForAction {
+    return Provider.of<AppDesign>(this, listen: false);
+  }
+
+  AppDesign get appDesign {
+    return Provider.of<AppDesign>(this);
   }
 }

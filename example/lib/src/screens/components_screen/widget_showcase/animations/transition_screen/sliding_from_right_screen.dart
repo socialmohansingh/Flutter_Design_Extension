@@ -7,7 +7,7 @@ class SlidingFromRightScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScaffold(
-      title: 'Sliding From Right Screen',
+      title: Text('Sliding From Right Screen'),
       body: SizedBox(),
     );
   }

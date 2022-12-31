@@ -9,7 +9,7 @@ class TransitionScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: 'Transition Screen',
+      title: const Text('Transition Screen'),
       body: Column(
         children: [
           Center(

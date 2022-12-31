@@ -10,7 +10,7 @@ class BorderRadiusScreen extends StatelessWidget {
     final theme = context.theme;
 
     return CustomScaffold(
-      title: 'Border Radius',
+      title: const Text('Border Radius'),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(

@@ -38,8 +38,7 @@ class HomeScreen extends StatelessWidget {
             'Theme: ${(state as ThemeConfigInitialized).brand.toString().split('.').last.toUpperCase()}';
 
         return CustomScaffold(
-          title: themeTitle,
-          showThemeConfigActionItem: true,
+          title: Text(themeTitle),
           body: ListView.builder(
             padding: EdgeInsets.only(
               bottom: theme.spacings.spacing40,

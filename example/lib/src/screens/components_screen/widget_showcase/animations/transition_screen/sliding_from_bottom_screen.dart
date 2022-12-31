@@ -7,7 +7,7 @@ class SlidingFromBottomScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CustomScaffold(
-      title: 'Sliding From Bottom Screen',
+      title: Text('Sliding From Bottom Screen'),
       body: SizedBox(),
     );
   }

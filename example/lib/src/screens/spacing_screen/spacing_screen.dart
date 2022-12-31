@@ -27,7 +27,7 @@ class SpacingScreen extends StatelessWidget {
     final spacingsNameList = spacingsMap.keys.toList();
 
     return CustomScaffold(
-      title: 'Spacings',
+      title: const Text('Spacings'),
       body: ListView.builder(
         padding: EdgeInsets.symmetric(
           horizontal: theme.spacings.spacing48,

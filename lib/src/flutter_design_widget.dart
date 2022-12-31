@@ -32,7 +32,7 @@ class _FlutterDesignAppState extends State<FlutterDesignApp> {
       builder: (context) => ChangeNotifierProvider(
         create: (context) => AppDesign(widget.languages, widget.defaultBrand),
         builder: (BuildContext context, Widget? child) {
-          final design = context.read<AppDesign>();
+          final design = context.appDesign;
           return MaterialApp(
             locale: design.lang,
             localeResolutionCallback: (locale, supportedLocales) {

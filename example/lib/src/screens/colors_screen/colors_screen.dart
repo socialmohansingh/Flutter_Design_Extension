@@ -21,7 +21,7 @@ class ColorsScreen extends StatelessWidget {
         _getColorHexNameMap(colors.neutral.values);
 
     return CustomScaffold(
-      title: 'Colors',
+      title: const Text('Colors'),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(

@@ -22,7 +22,7 @@ class OpacityScreen extends StatelessWidget {
     };
 
     return CustomScaffold(
-      title: 'Opacity',
+      title: const Text('Opacity'),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(

@@ -12,7 +12,7 @@ class TypographyScreen extends StatelessWidget {
     final textStyles = theme.textStyles.values;
 
     return CustomScaffold(
-      title: 'Typography',
+      title: const Text('Typography'),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: theme.spacings.spacing16),
         child: ListView.builder(

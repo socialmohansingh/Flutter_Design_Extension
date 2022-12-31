@@ -20,8 +20,7 @@ class WidgetShowcaseScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CustomScaffold(
-      title: title,
-      closable: closable,
+      title: Text(title),
       body: child,
       alternativeBackgroundColor: alternativeBackgroundColor,
     );

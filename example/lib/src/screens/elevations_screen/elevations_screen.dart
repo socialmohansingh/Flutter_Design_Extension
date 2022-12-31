@@ -10,7 +10,7 @@ class ElevationsScreen extends StatelessWidget {
     final theme = context.theme;
 
     return CustomScaffold(
-      title: 'Elevation',
+      title: const Text('Elevation'),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(

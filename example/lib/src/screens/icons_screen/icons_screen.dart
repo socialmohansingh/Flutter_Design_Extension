@@ -20,7 +20,7 @@ class IconsScreen extends StatelessWidget {
         .toList();
 
     return CustomScaffold(
-      title: 'Icons',
+      title: const Text('Icons'),
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.symmetric(
