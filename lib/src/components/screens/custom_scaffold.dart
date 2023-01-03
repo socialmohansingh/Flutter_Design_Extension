@@ -27,24 +27,27 @@ class CustomScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = context.theme;
 
-    return Scaffold(
-      backgroundColor: alternativeBackgroundColor ??
-          theme.colors.brand.background ??
-          theme.colors.neutral.white,
-      body: body,
-      appBar: customAppBar ??
-          AppBar(
-            elevation: elevation,
-            centerTitle: centerTitle,
-            foregroundColor: theme.colors.brand.background != null
-                ? theme.colors.brand.main
-                : theme.colors.neutral.white,
-            backgroundColor:
-                theme.colors.brand.background ?? theme.colors.brand.main,
-            title: title,
-            leading: leading,
-            actions: actions,
-          ),
+    return GestureDetector(
+      onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
+      child: Scaffold(
+        backgroundColor: alternativeBackgroundColor ??
+            theme.colors.brand.background ??
+            theme.colors.neutral.white,
+        body: body,
+        appBar: customAppBar ??
+            AppBar(
+              elevation: elevation,
+              centerTitle: centerTitle,
+              foregroundColor: theme.colors.brand.background != null
+                  ? theme.colors.brand.main
+                  : theme.colors.neutral.white,
+              backgroundColor:
+                  theme.colors.brand.background ?? theme.colors.brand.main,
+              title: title,
+              leading: leading,
+              actions: actions,
+            ),
+      ),
     );
   }
 }

@@ -59,10 +59,6 @@ class AppDesign with ChangeNotifier {
     _brand = brand;
     notifyListeners();
   }
-
-  void reloadWidgets() {
-    notifyListeners();
-  }
 }
 
 extension AppDesignProvider on BuildContext {

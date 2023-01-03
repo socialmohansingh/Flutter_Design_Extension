@@ -30,7 +30,7 @@ extension ColorInteractionShowcaseExtension on ColorInteraction {
   List<Color> get values => [main, hover, pressed];
 }
 
-extension ColorMessagingShowcaseExtension on ColorMessaging {
+extension ColorMessagingShowcaseExtension on ColorMessagingLight {
   List<Color> get values => [
         error,
         errorLight,

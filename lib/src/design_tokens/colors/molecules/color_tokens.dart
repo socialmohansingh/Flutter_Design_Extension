@@ -22,7 +22,7 @@ class ColorTokens extends ThemeExtension<ColorTokens> {
     ColorBrand? brand,
     ColorInteraction? interaction,
     ColorNeutral? neutral,
-    ColorMessaging? messaging,
+    ColorMessagingLight? messaging,
   }) {
     return ColorTokens(
       brand: brand ?? this.brand,

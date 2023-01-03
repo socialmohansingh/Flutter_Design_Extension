@@ -18,8 +18,8 @@ class BrandColorsTokenInLightMode extends ColorTokens {
             hover: ColorAtoms.red800,
             pressed: ColorAtoms.red1200,
           ),
-          neutral: ColorNeutral(),
-          messaging: ColorMessaging(),
+          neutral: ColorNeutralLight(),
+          messaging: ColorMessagingLight(),
         );
 }
 
@@ -36,7 +36,7 @@ class BrandColorsTokenInDarkMode extends ColorTokens {
             hover: ColorAtoms.red800,
             pressed: ColorAtoms.red1200,
           ),
-          neutral: ColorNeutral(),
-          messaging: ColorMessaging(),
+          neutral: ColorNeutralDark(),
+          messaging: ColorMessagingLight(),
         );
 }

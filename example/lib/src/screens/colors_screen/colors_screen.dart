@@ -15,8 +15,8 @@ class ColorsScreen extends StatelessWidget {
         _getColorHexNameMap(colors.brand.values);
     final Map<String, Color> interactionMap =
         _getColorHexNameMap(colors.interaction.values);
-    final Map<String, Color> messagingMap =
-        _getColorHexNameMap(colors.messaging.values);
+    final Map<String, Color> messagingMap = {};
+    // _getColorHexNameMap(colors.messaging.values);
     final Map<String, Color> neutralMap =
         _getColorHexNameMap(colors.neutral.values);
 
