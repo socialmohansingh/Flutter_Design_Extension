@@ -10,12 +10,12 @@ import 'package:provider/provider.dart';
 class FlutterDesignApp extends StatefulWidget {
   final List<Localize> languages;
   final String langugePath;
-  final Widget? home;
+  final Widget home;
   final Brand defaultBrand;
   final GlobalKey<NavigatorState>? navigatorKey;
 
   FlutterDesignApp({
-    this.home,
+    required this.home,
     Brand? brand,
     this.langugePath = "assets/languages",
     this.languages = const [],
@@ -70,7 +70,7 @@ class _FlutterDesignAppState extends State<FlutterDesignApp> {
                 ),
               ],
             ),
-            home: widget.home,
+            builder: (context, child) => widget.home,
           );
         },
       ),
