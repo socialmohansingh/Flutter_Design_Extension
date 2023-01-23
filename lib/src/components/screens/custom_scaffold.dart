@@ -10,6 +10,7 @@ class CustomScaffold extends StatelessWidget {
   final Widget? leading;
   final List<Widget> actions;
   final PreferredSizeWidget? customAppBar;
+  final Widget? floatingActionButton;
 
   const CustomScaffold({
     required this.body,
@@ -20,6 +21,7 @@ class CustomScaffold extends StatelessWidget {
     this.title = const Text(''),
     this.alternativeBackgroundColor,
     this.customAppBar,
+    this.floatingActionButton,
     super.key,
   });
 
@@ -47,6 +49,7 @@ class CustomScaffold extends StatelessWidget {
               leading: leading,
               actions: actions,
             ),
+        floatingActionButton: floatingActionButton,
       ),
     );
   }

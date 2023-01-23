@@ -27,14 +27,14 @@ class BrandColorsTokenInDarkMode extends ColorTokens {
   BrandColorsTokenInDarkMode()
       : super(
           brand: ColorBrand(
-            main: ColorAtoms.red600,
-            dark: ColorAtoms.red800,
-            secondary: ColorAtoms.blue200,
+            main: ColorAtoms.blue200,
+            dark: ColorAtoms.blue100,
+            secondary: ColorAtoms.green300,
           ),
           interaction: ColorInteraction(
-            main: ColorAtoms.red600,
-            hover: ColorAtoms.red800,
-            pressed: ColorAtoms.red1200,
+            main: ColorAtoms.blue100,
+            hover: ColorAtoms.blue100,
+            pressed: ColorAtoms.blue100,
           ),
           neutral: ColorNeutralDark(),
           messaging: ColorMessagingLight(),
