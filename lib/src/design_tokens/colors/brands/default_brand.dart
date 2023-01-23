@@ -11,7 +11,7 @@ class BrandColorsTokenInLightMode extends ColorTokens {
           brand: ColorBrand(
             main: ColorAtoms.blue200,
             dark: ColorAtoms.blue200,
-            secondary: ColorAtoms.green300,
+            secondary: ColorAtoms.blue100,
           ),
           interaction: ColorInteraction(
             main: ColorAtoms.blue200,
@@ -29,7 +29,7 @@ class BrandColorsTokenInDarkMode extends ColorTokens {
           brand: ColorBrand(
             main: ColorAtoms.blue200,
             dark: ColorAtoms.blue200,
-            secondary: ColorAtoms.green300,
+            secondary: ColorAtoms.blue100,
           ),
           interaction: ColorInteraction(
             main: ColorAtoms.blue200,
