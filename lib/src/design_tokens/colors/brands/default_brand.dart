@@ -9,14 +9,14 @@ class BrandColorsTokenInLightMode extends ColorTokens {
   BrandColorsTokenInLightMode()
       : super(
           brand: ColorBrand(
-            main: ColorAtoms.red600,
-            dark: ColorAtoms.red800,
-            secondary: ColorAtoms.blue200,
+            main: ColorAtoms.blue200,
+            dark: ColorAtoms.blue200,
+            secondary: ColorAtoms.green300,
           ),
           interaction: ColorInteraction(
-            main: ColorAtoms.red600,
-            hover: ColorAtoms.red800,
-            pressed: ColorAtoms.red1200,
+            main: ColorAtoms.blue200,
+            hover: ColorAtoms.blue200,
+            pressed: ColorAtoms.blue200,
           ),
           neutral: ColorNeutralLight(),
           messaging: ColorMessagingLight(),
@@ -28,15 +28,15 @@ class BrandColorsTokenInDarkMode extends ColorTokens {
       : super(
           brand: ColorBrand(
             main: ColorAtoms.blue200,
-            dark: ColorAtoms.blue100,
+            dark: ColorAtoms.blue200,
             secondary: ColorAtoms.green300,
           ),
           interaction: ColorInteraction(
-            main: ColorAtoms.blue100,
-            hover: ColorAtoms.blue100,
-            pressed: ColorAtoms.blue100,
+            main: ColorAtoms.blue200,
+            hover: ColorAtoms.blue200,
+            pressed: ColorAtoms.blue200,
           ),
           neutral: ColorNeutralDark(),
-          messaging: ColorMessagingLight(),
+          messaging: ColorMessagingDark(),
         );
 }
