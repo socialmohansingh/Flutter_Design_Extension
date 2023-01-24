@@ -55,22 +55,26 @@ class DesignTextField extends StatefulWidget {
   /// Do something when edit completes
   final Function()? onEditingComplete;
 
+  final bool autocorrect;
+
   /// Basic keyboardType
   final TextInputType? keyboardType;
 
-  const DesignTextField(
-      {required this.placeholderText,
-      required this.status,
-      required this.textEditingController,
-      required this.focusNode,
-      this.obscureText = false,
-      this.textInputAction = TextInputAction.done,
-      this.maxLines = 1,
-      this.prefixIconData,
-      this.suffixType,
-      this.onEditingComplete,
-      this.keyboardType,
-      super.key});
+  const DesignTextField({
+    required this.placeholderText,
+    required this.status,
+    required this.textEditingController,
+    required this.focusNode,
+    this.obscureText = false,
+    this.autocorrect = false,
+    this.textInputAction = TextInputAction.done,
+    this.maxLines = 1,
+    this.prefixIconData,
+    this.suffixType,
+    this.onEditingComplete,
+    this.keyboardType,
+    super.key,
+  });
 
   @override
   State<DesignTextField> createState() => _DesignTextFieldState();
@@ -115,6 +119,7 @@ class _DesignTextFieldState extends State<DesignTextField> {
                 placeholderText: widget.placeholderText,
                 maxLines: widget.maxLines,
                 obscureText: _obscureText,
+                autocorrect: widget.autocorrect,
                 enabled: widget.status.statusType !=
                         DesignTextFieldStatusType.readOnly &&
                     widget.status.statusType !=

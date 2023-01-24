@@ -5,6 +5,7 @@ class BaseDesignTextField extends StatelessWidget {
   final String placeholderText;
   final bool obscureText;
   final bool enabled;
+  final bool autocorrect;
   final TextEditingController textEditingController;
   final TextInputAction textInputAction;
   final Color labelColor;
@@ -13,18 +14,20 @@ class BaseDesignTextField extends StatelessWidget {
   final Function()? onEditingComplete;
   final TextInputType? keyboardType;
 
-  const BaseDesignTextField(
-      {required this.placeholderText,
-      required this.obscureText,
-      required this.enabled,
-      required this.textEditingController,
-      required this.textInputAction,
-      required this.labelColor,
-      required this.focusNode,
-      this.maxLines,
-      this.onEditingComplete,
-      this.keyboardType,
-      super.key});
+  const BaseDesignTextField({
+    required this.placeholderText,
+    required this.obscureText,
+    required this.enabled,
+    required this.textEditingController,
+    required this.textInputAction,
+    required this.labelColor,
+    required this.focusNode,
+    this.maxLines,
+    this.autocorrect = false,
+    this.onEditingComplete,
+    this.keyboardType,
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -34,6 +37,7 @@ class BaseDesignTextField extends StatelessWidget {
       obscureText: obscureText,
       obscuringCharacter: '*',
       cursorWidth: 1,
+      autocorrect: autocorrect,
       cursorColor: theme.colors.neutral.black,
       onEditingComplete: onEditingComplete,
       keyboardType: keyboardType,
