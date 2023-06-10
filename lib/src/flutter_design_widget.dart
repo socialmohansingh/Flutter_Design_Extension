@@ -10,16 +10,19 @@ import 'package:provider/provider.dart';
 class FlutterDesignApp extends StatefulWidget {
   final List<Localize> languages;
   final String langugePath;
-  final Widget home;
+  final Widget Function(
+    Locale? Function(Locale?, Iterable<Locale>)? localeResolutionCallback,
+    Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
+    Iterable<Locale> supportedLocales,
+    Locale locale,
+    ThemeData theme,
+  ) materialApp;
   final Brand defaultBrand;
-  final GlobalKey<NavigatorState>? navigatorKey;
-
   FlutterDesignApp({
-    required this.home,
+    required this.materialApp,
     Brand? brand,
     this.langugePath = "assets/languages",
     this.languages = const [],
-    this.navigatorKey,
     super.key,
   }) : defaultBrand = (brand == null) ? DefaultBrand() : brand;
 
@@ -36,41 +39,46 @@ class _FlutterDesignAppState extends State<FlutterDesignApp> {
         create: (context) => AppDesign(widget.languages, widget.defaultBrand),
         builder: (BuildContext context, Widget? child) {
           final design = context.appDesign;
-          return MaterialApp(
-            locale: design.lang,
-            navigatorKey: widget.navigatorKey,
-            localeResolutionCallback: (locale, supportedLocales) {
-              if (supportedLocales.contains(locale)) {
-                return locale;
-              }
-              return design.lang;
-            },
-            localizationsDelegates: [
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-              LocalJsonLocalization.delegate,
-            ],
-            supportedLocales: design.supportedLocales,
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              tabBarTheme: TabBarTheme(
-                labelColor:
-                    design.brand.getColorTokens(design.isDarkMode).brand.main,
-                unselectedLabelColor: design.brand
-                    .getColorTokens(design.isDarkMode)
-                    .brand
-                    .secondary,
-              ),
-              extensions: [
-                DesignTokensThemeExtension.initWithBrandAndTextDirection(
-                  brand: design.brand,
-                  textDirection: design.textDirection,
-                  isDarkMode: design.isDarkMode,
-                ),
-              ],
+          final Iterable<LocalizationsDelegate<dynamic>>
+              localizationsDelegates = [
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+            LocalJsonLocalization.delegate,
+          ];
+          final Iterable<Locale> supportedLocales = design.supportedLocales;
+          final Locale locale = design.lang;
+          final ThemeData theme = ThemeData(
+            tabBarTheme: TabBarTheme(
+              labelColor:
+                  design.brand.getColorTokens(design.isDarkMode).brand.main,
+              unselectedLabelColor: design.brand
+                  .getColorTokens(design.isDarkMode)
+                  .brand
+                  .secondary,
             ),
-            builder: (context, child) => widget.home,
+            extensions: [
+              DesignTokensThemeExtension.initWithBrandAndTextDirection(
+                brand: design.brand,
+                textDirection: design.textDirection,
+                isDarkMode: design.isDarkMode,
+              ),
+            ],
+          );
+          final Locale? Function(Locale?, Iterable<Locale>)
+              // ignore: prefer_function_declarations_over_variables
+              localeResolutionCallback = (locale, supportedLocales) {
+            if (supportedLocales.contains(locale)) {
+              return locale;
+            }
+            return design.lang;
+          };
+          return widget.materialApp(
+            localeResolutionCallback,
+            localizationsDelegates,
+            supportedLocales,
+            locale,
+            theme,
           );
         },
       ),

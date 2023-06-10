@@ -14,7 +14,22 @@ class FlutterDesignShowcaseApp extends StatelessWidget {
       child: BlocBuilder<ThemeConfigBloc, ThemeConfigState>(
         builder: (context, state) {
           return FlutterDesignApp(
-            home: HomeScreen(),
+            materialApp: (
+              localeResolutionCallback,
+              localizationsDelegates,
+              supportedLocales,
+              locale,
+              theme,
+            ) {
+              return MaterialApp(
+                localeResolutionCallback: localeResolutionCallback,
+                localizationsDelegates: localizationsDelegates,
+                supportedLocales: supportedLocales,
+                locale: locale,
+                theme: theme,
+                builder: (context, child) => const HomeScreen(),
+              );
+            },
           );
         },
       ),
