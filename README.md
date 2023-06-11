@@ -1,39 +1,79 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
-
-## Features
-
-TODO: List what your package can do. Maybe include images, gifs, or videos.
-
-## Getting started
-
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
-
-## Usage
-
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
-
-```dart
-const like = 'sample';
+## **SETUP STEP**
+1. Create a App Brand ```extends Brand```
+  ```
+class AppBrand extends Brand {
+  @override
+  ColorTokens getColorTokens(bool isDarkMode) {
+    return ColorTokens(
+      brand: ColorBrand(
+        main: isDarkMode ? const Color(0xFFEBEAEE) : const Color(0xFF1D1C1C),
+        dark: isDarkMode ? const Color(0xFFEBEAEE) : const Color(0xFF003366),
+        secondary: isDarkMode ? Colors.white24 : Colors.black26,
+        background:
+            isDarkMode ? const Color(0xFF1D1C1C) : const Color(0xFFEBEAEE),
+      ),
+      interaction: ColorInteraction(
+        main: isDarkMode ? const Color(0xFFEBEAEE) : const Color(0xFF1D1C1C),
+        hover: isDarkMode
+            ? Colors.white24.withOpacity(0.5)
+            : const Color(0xFF003366).withOpacity(0.5),
+        pressed: isDarkMode ? Colors.white24 : const Color(0xFF003366),
+      ),
+      neutral: isDarkMode ? ColorNeutralDark() : ColorNeutralLight(),
+      messaging: isDarkMode ? ColorMessagingDark() : ColorMessagingLight(),
+    );
+  }
+}
 ```
+2.  Start ```FlutterDesignApp``` Widget inside RunApp
+  ```
+  runApp(FlutterDesignApp(
+            brand: AppBrand(),
+            materialApp: (
+              localeResolutionCallback,
+              localizationsDelegates,
+              supportedLocales,
+              locale,
+              theme,
+            ) {
+              return MaterialApp(
+                localeResolutionCallback: localeResolutionCallback,
+                localizationsDelegates: localizationsDelegates,
+                supportedLocales: supportedLocales,
+                locale: locale,
+                theme: theme,
+                builder: (context, child) => const YourAppHomeScreen(),
+              );
+            },
+          ),
+          );
+  ```
+3. Don't forget to add `en_US.json` file inside `assets/languages`
 
-## Additional information
-
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+## `DesignTokensThemeExtension` 
+it supports the
+  ```
+   final TextDirection textDirection;
+   final ColorTokens colors;
+   final ElevationTokens elevations;
+   final SpacingTokens spacings;
+   final OpacityTokens opacities;
+   final BorderRadiusTokens borderRadiuses;
+   final TextStyleTokens textStyles;
+   final IconTokens icons;
+  ```
+  1. It is used by using `context.theme` inside build method
+  
+  ##  `AppDesignProvider`
+          It is used to find application design system and toggle dark, and light themes. It is also used for toggle languages.
+  1. use `context.appDesignForAction` for action
+  2. use `context.appDesign` for design
+  3. use `toggleTheme()` to toggle your dark and light theme
+  4. use `setThemeLanguage(Localize lang)` to update your app language
+  5. use `updateBrand(Brand brand)` to update your brand
+  6. use `isDarkMode` to get your current theme mode
+  7. use `supportedLocales` to get your app supported locales (languages)
+  8. use `textDirection` to get your current text direction
+  9. use `lang` to get your current app language
+  10. use `brand` to get your current app brand
+  
