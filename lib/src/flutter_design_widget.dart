@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 class FlutterDesignApp extends StatefulWidget {
   final List<Localize> languages;
   final String langugePath;
+  final ThemeMode mode;
   final Widget Function(
     Locale? Function(Locale?, Iterable<Locale>)? localeResolutionCallback,
     Iterable<LocalizationsDelegate<dynamic>>? localizationsDelegates,
@@ -23,6 +24,7 @@ class FlutterDesignApp extends StatefulWidget {
     Brand? brand,
     this.langugePath = "assets/languages",
     this.languages = const [],
+    this.mode = ThemeMode.system,
     super.key,
   }) : defaultBrand = (brand == null) ? DefaultBrand() : brand;
 
@@ -36,7 +38,8 @@ class _FlutterDesignAppState extends State<FlutterDesignApp> {
     LocalJsonLocalization.delegate.directories = [widget.langugePath];
     return Builder(
       builder: (context) => ChangeNotifierProvider(
-        create: (context) => AppDesign(widget.languages, widget.defaultBrand),
+        create: (context) =>
+            AppDesign(widget.languages, widget.defaultBrand, widget.mode),
         builder: (BuildContext context, Widget? child) {
           final design = context.appDesign;
           final Iterable<LocalizationsDelegate<dynamic>>

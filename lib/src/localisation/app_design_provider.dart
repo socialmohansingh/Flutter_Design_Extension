@@ -6,10 +6,10 @@ import 'package:provider/provider.dart';
 class AppDesign with ChangeNotifier {
   final List<Localize> _languages;
   Brand _brand;
+  ThemeMode _themeMode;
 
-  AppDesign(this._languages, this._brand);
+  AppDesign(this._languages, this._brand, this._themeMode);
 
-  ThemeMode themeMode = ThemeMode.system;
   Localize? _lang;
 
   Brand get brand {
@@ -33,11 +33,11 @@ class AppDesign with ChangeNotifier {
   }
 
   bool get isDarkMode {
-    if (themeMode == ThemeMode.system) {
+    if (_themeMode == ThemeMode.system) {
       final brightness = SchedulerBinding.instance.window.platformBrightness;
       return brightness == Brightness.dark;
     } else {
-      return themeMode == ThemeMode.dark;
+      return _themeMode == ThemeMode.dark;
     }
   }
 
@@ -46,7 +46,7 @@ class AppDesign with ChangeNotifier {
   }
 
   void toggleTheme() {
-    themeMode = !isDarkMode ? ThemeMode.dark : ThemeMode.light;
+    _themeMode = !isDarkMode ? ThemeMode.dark : ThemeMode.light;
     notifyListeners();
   }
 
