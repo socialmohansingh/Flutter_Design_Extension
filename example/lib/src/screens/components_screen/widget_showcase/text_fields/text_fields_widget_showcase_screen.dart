@@ -147,8 +147,10 @@ class _TextFieldsWidgetShowcaseScreenState
         SizedBox(height: theme.spacings.spacing8),
         DesignTextField(
             placeholderText: 'Active',
+            maxLines: 20,
             status: DesignTextFieldStatus(
-                statusType: DesignTextFieldStatusType.active),
+              statusType: DesignTextFieldStatusType.active,
+            ),
             textEditingController: statusesTypesActiveTextEditingController,
             textInputAction: TextInputAction.next,
             focusNode: statusesTypesActiveFocusNode),

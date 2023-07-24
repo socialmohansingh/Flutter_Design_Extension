@@ -48,6 +48,7 @@ class BaseDesignTextField extends StatelessWidget {
       controller: textEditingController,
       textInputAction: textInputAction,
       decoration: InputDecoration(
+        alignLabelWithHint: true,
         labelText: placeholderText,
         labelStyle: theme.textStyles.paragraph_400.copyWith(color: labelColor),
         focusedBorder: InputBorder.none,

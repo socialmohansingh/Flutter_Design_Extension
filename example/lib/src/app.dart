@@ -27,7 +27,7 @@ class FlutterDesignShowcaseApp extends StatelessWidget {
                 supportedLocales: supportedLocales,
                 locale: locale,
                 theme: theme,
-                builder: (context, child) => const HomeScreen(),
+                home: const HomeScreen(),
               );
             },
           );
