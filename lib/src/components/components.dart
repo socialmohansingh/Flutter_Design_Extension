@@ -12,3 +12,6 @@ export 'tags/design_tag.dart';
 export 'tags/design_tag_style.dart';
 export 'tags/design_tag_types.dart';
 export 'text_fields/design_text_field.dart';
+export 'text_fields/design_date_time_picker_text_field.dart';
+export 'text_fields/design_single_picker_text_field.dart';
+export 'text_fields/design_multi_picker_text_field.dart';

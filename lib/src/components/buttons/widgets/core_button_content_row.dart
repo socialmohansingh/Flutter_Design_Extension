@@ -8,11 +8,15 @@ class CoreButtonContentRow extends StatelessWidget {
   final String label;
   final IconData? leftIcon;
   final IconData? rightIcon;
+  final Widget? leftIconWidget;
+  final Widget? rightIconWidget;
 
   const CoreButtonContentRow({
     required this.label,
     required this.leftIcon,
     required this.rightIcon,
+    this.leftIconWidget,
+    this.rightIconWidget,
     Key? key,
   }) : super(key: key);
 
@@ -24,6 +28,7 @@ class CoreButtonContentRow extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
+        if (leftIconWidget != null) leftIconWidget!,
         if (leftIcon != null) ...[
           Icon(leftIcon, size: _kDefaultIconSize),
           SizedBox(width: theme.spacings.spacing8),
@@ -32,7 +37,8 @@ class CoreButtonContentRow extends StatelessWidget {
         if (rightIcon != null) ...[
           SizedBox(width: theme.spacings.spacing8),
           Icon(rightIcon, size: _kDefaultIconSize),
-        ]
+        ],
+        if (rightIconWidget != null) rightIconWidget!,
       ],
     );
   }

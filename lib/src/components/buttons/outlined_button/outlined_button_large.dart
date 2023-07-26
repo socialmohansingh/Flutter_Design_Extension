@@ -7,6 +7,8 @@ class DesignOutlinedButtonLarge extends StatelessWidget {
   final String label;
   final IconData? leftIcon;
   final IconData? rightIcon;
+  final Widget? leftIconWidget;
+  final Widget? rightIconWidget;
   final void Function()? onPressed;
 
   const DesignOutlinedButtonLarge({
@@ -14,6 +16,8 @@ class DesignOutlinedButtonLarge extends StatelessWidget {
     this.leftIcon,
     this.rightIcon,
     this.onPressed,
+    this.leftIconWidget,
+    this.rightIconWidget,
     super.key,
   }) : _buttonSize = DesignButtonSize.large;
 
@@ -25,6 +29,8 @@ class DesignOutlinedButtonLarge extends StatelessWidget {
       onPressed: onPressed,
       leftIcon: leftIcon,
       rightIcon: rightIcon,
+      leftIconWidget: leftIconWidget,
+      rightIconWidget: rightIconWidget,
     );
   }
 }

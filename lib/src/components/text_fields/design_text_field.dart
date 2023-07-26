@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:flutter_design_extension/src/components/text_fields/components/base_design_text_field.dart';
 import 'package:flutter_design_extension/src/components/text_fields/components/design_text_field_container.dart';
@@ -48,9 +49,11 @@ class DesignTextField extends StatefulWidget {
 
   /// Determines the presence of prefix by defining the icon, every other parameter of prefix is not changeable
   final IconData? prefixIconData;
+  final Widget? prefixIconWidget;
 
   /// _suffixType Determines if the Text Field has a suffix, and if it does, what kind of suffix
   final DesignTextFieldSuffixType? suffixType;
+  final Widget? suffixIconWidget;
 
   /// Do something when edit completes
   final Function()? onEditingComplete;
@@ -60,6 +63,12 @@ class DesignTextField extends StatefulWidget {
   /// Basic keyboardType
   final TextInputType? keyboardType;
 
+  /// Background and border design of text field
+  final BoxDecoration? decoration;
+
+  final bool showLabelText;
+  final int? maxLength;
+  final MaxLengthEnforcement? maxLengthEnforcement;
   const DesignTextField({
     required this.placeholderText,
     required this.status,
@@ -67,12 +76,18 @@ class DesignTextField extends StatefulWidget {
     required this.focusNode,
     this.obscureText = false,
     this.autocorrect = false,
+    this.showLabelText = true,
     this.textInputAction = TextInputAction.done,
     this.maxLines = 1,
     this.prefixIconData,
+    this.prefixIconWidget,
+    this.suffixIconWidget,
     this.suffixType,
     this.onEditingComplete,
     this.keyboardType,
+    this.decoration,
+    this.maxLength,
+    this.maxLengthEnforcement,
     super.key,
   });
 
@@ -110,8 +125,14 @@ class _DesignTextFieldState extends State<DesignTextField> {
     return DesignTextFieldContainer(
         status: widget.status,
         isFocused: _isFocused,
+        decoration: widget.decoration,
         child: Row(
           children: [
+            if (widget.prefixIconWidget != null)
+              Padding(
+                padding: EdgeInsets.only(left: theme.spacings.spacing16),
+                child: widget.prefixIconWidget,
+              ),
             if (widget.prefixIconData != null)
               DesignTextFieldPrefix(iconData: widget.prefixIconData!),
             Expanded(
@@ -119,6 +140,7 @@ class _DesignTextFieldState extends State<DesignTextField> {
                 placeholderText: widget.placeholderText,
                 maxLines: widget.maxLines,
                 obscureText: _obscureText,
+                showLabelText: widget.showLabelText,
                 autocorrect: widget.autocorrect,
                 enabled: widget.status.statusType !=
                         DesignTextFieldStatusType.readOnly &&
@@ -133,6 +155,11 @@ class _DesignTextFieldState extends State<DesignTextField> {
                 keyboardType: widget.keyboardType,
               ),
             ),
+            if (widget.suffixIconWidget != null)
+              Padding(
+                padding: EdgeInsets.only(left: theme.spacings.spacing16),
+                child: widget.suffixIconWidget,
+              ),
             if (widget.suffixType != null)
               DesignTextFieldSuffix(
                   iconData: suffixIconData(widget.suffixType!),

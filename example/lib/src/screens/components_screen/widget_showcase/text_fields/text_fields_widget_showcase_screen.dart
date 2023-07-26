@@ -147,7 +147,6 @@ class _TextFieldsWidgetShowcaseScreenState
         SizedBox(height: theme.spacings.spacing8),
         DesignTextField(
             placeholderText: 'Active',
-            maxLines: 20,
             status: DesignTextFieldStatus(
               statusType: DesignTextFieldStatusType.active,
             ),
@@ -198,11 +197,79 @@ class _TextFieldsWidgetShowcaseScreenState
             focusNode: FocusNode()),
         SizedBox(height: theme.spacings.spacing8),
         DesignTextField(
-            placeholderText: 'Read Only',
-            status: DesignTextFieldStatus(
-                statusType: DesignTextFieldStatusType.readOnly),
-            textEditingController: TextEditingController(),
-            focusNode: FocusNode()),
+          placeholderText: 'Read Only',
+          status: DesignTextFieldStatus(
+              statusType: DesignTextFieldStatusType.readOnly),
+          textEditingController: TextEditingController(),
+          focusNode: FocusNode(),
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        Text(
+          'Date Time Pickers',
+          style: theme.textStyles.heading3_500,
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        DesignDatePickerTextField(
+          placeholderText: 'Date Picker',
+          status: DesignTextFieldStatus(
+              statusType: DesignTextFieldStatusType.active),
+          textEditingController: TextEditingController(),
+          onDatePicked: (DateTime pickedDate) {},
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        DesignTimePickerTextField(
+          placeholderText: 'Time Picker',
+          status: DesignTextFieldStatus(
+              statusType: DesignTextFieldStatusType.active),
+          textEditingController: TextEditingController(),
+          onTimePicked: (TimeOfDay pickedTime) {},
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        Text(
+          'Pickers',
+          style: theme.textStyles.heading3_500,
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        DesignSingleColumnPickerTextField<DemoClass>(
+          placeholderText: 'Single Column Picker',
+          status: DesignTextFieldStatus(
+              statusType: DesignTextFieldStatusType.active),
+          textEditingController: TextEditingController(),
+          data: [DemoClass("M"), DemoClass("N"), DemoClass("O")],
+          buildTitle: (data, position) {
+            return data.title;
+          },
+          onCancel: (isCancel) {
+            print(isCancel);
+          },
+          onConfirm: (data, position) {
+            print(data.title);
+          },
+          onChanged: (data, position) {
+            print(data.title);
+          },
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        DesignMultiColumnPickerTextField(
+          placeholderText: 'Multiple Column Picker',
+          status: DesignTextFieldStatus(
+              statusType: DesignTextFieldStatusType.active),
+          textEditingController: TextEditingController(),
+          data: const [
+            ["M", "N", "O"],
+            ["R", "S", "T"],
+            ["A", "B", "C"],
+          ],
+          onCancel: (isCancel) {
+            print(isCancel);
+          },
+          onConfirm: (data, position) {
+            print(data);
+          },
+          onChanged: (data, position) {
+            print(data);
+          },
+        ),
       ],
     );
   }
@@ -413,4 +480,9 @@ class _TextFieldsWidgetShowcaseScreenState
       ],
     );
   }
+}
+
+class DemoClass {
+  final String title;
+  DemoClass(this.title);
 }

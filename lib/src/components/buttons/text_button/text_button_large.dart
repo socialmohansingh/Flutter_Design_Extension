@@ -7,12 +7,16 @@ class DesignTextButtonLarge extends StatelessWidget {
   final String label;
   final IconData? leftIcon;
   final IconData? rightIcon;
+  final Widget? leftIconWidget;
+  final Widget? rightIconWidget;
   final void Function()? onPressed;
 
   const DesignTextButtonLarge({
     required this.label,
     this.leftIcon,
     this.rightIcon,
+    this.leftIconWidget,
+    this.rightIconWidget,
     this.onPressed,
     super.key,
   }) : _buttonSize = DesignButtonSize.large;
@@ -25,6 +29,8 @@ class DesignTextButtonLarge extends StatelessWidget {
       onPressed: onPressed,
       leftIcon: leftIcon,
       rightIcon: rightIcon,
+      leftIconWidget: leftIconWidget,
+      rightIconWidget: rightIconWidget,
     );
   }
 }

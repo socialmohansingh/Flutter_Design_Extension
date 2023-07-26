@@ -1,3 +1,4 @@
+import 'package:flutter/services.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -11,8 +12,11 @@ class BaseDesignTextField extends StatelessWidget {
   final Color labelColor;
   final FocusNode focusNode;
   final int? maxLines;
+  final int? maxLength;
+  final MaxLengthEnforcement? maxLengthEnforcement;
   final Function()? onEditingComplete;
   final TextInputType? keyboardType;
+  final bool showLabelText;
 
   const BaseDesignTextField({
     required this.placeholderText,
@@ -23,6 +27,9 @@ class BaseDesignTextField extends StatelessWidget {
     required this.labelColor,
     required this.focusNode,
     this.maxLines,
+    this.maxLength,
+    this.maxLengthEnforcement,
+    this.showLabelText = true,
     this.autocorrect = false,
     this.onEditingComplete,
     this.keyboardType,
@@ -37,6 +44,8 @@ class BaseDesignTextField extends StatelessWidget {
       obscureText: obscureText,
       obscuringCharacter: '*',
       cursorWidth: 1,
+      maxLength: maxLength,
+      maxLengthEnforcement: maxLengthEnforcement,
       autocorrect: autocorrect,
       cursorColor: theme.colors.neutral.black,
       onEditingComplete: onEditingComplete,
@@ -47,19 +56,21 @@ class BaseDesignTextField extends StatelessWidget {
           .copyWith(color: theme.colors.neutral.black),
       controller: textEditingController,
       textInputAction: textInputAction,
+
       decoration: InputDecoration(
-        alignLabelWithHint: true,
-        labelText: placeholderText,
+        alignLabelWithHint: (maxLines ?? 0) > 1,
+        labelText: showLabelText ? placeholderText : "",
+        hintText: showLabelText ? "" : placeholderText,
         labelStyle: theme.textStyles.paragraph_400.copyWith(color: labelColor),
         focusedBorder: InputBorder.none,
         enabledBorder: InputBorder.none,
         border: InputBorder.none,
         contentPadding: EdgeInsets.only(
-            bottom: theme.spacings.spacing8,
-            left: theme.spacings.spacing16,
-            top: theme.spacings.spacing4,
-            // text field itself has built in padding of 4, we add 4 on top of that
-            right: theme.spacings.spacing16), // use token
+          bottom: theme.spacings.spacing8,
+          left: theme.spacings.spacing16,
+          top: theme.spacings.spacing4,
+          right: theme.spacings.spacing16,
+        ),
       ),
       focusNode: focusNode,
     );

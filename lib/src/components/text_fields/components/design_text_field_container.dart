@@ -6,6 +6,7 @@ class DesignTextFieldContainer extends StatelessWidget {
   final Widget child;
   final DesignTextFieldStatus status;
   final bool isFocused;
+  final BoxDecoration? decoration;
   static const List<DesignTextFieldStatusType> _visibleStatusTypes = [
     DesignTextFieldStatusType.success,
     DesignTextFieldStatusType.error,
@@ -17,6 +18,7 @@ class DesignTextFieldContainer extends StatelessWidget {
       {required this.child,
       required this.status,
       required this.isFocused,
+      this.decoration,
       super.key});
 
   @override
@@ -25,17 +27,16 @@ class DesignTextFieldContainer extends StatelessWidget {
     return Column(
       children: [
         Container(
-          decoration: BoxDecoration(
-            color: backgroundColor(theme, status.statusType),
-            borderRadius:
-                BorderRadius.circular(theme.borderRadiuses.borderRadiusSmall),
-            border: Border.all(
-                width: 1,
-                color: borderColor(
-                    theme,
-                    status
-                        .statusType)), // TODO: add border width token when we add it to the design system
-          ),
+          decoration: decoration ??
+              BoxDecoration(
+                color: backgroundColor(theme, status.statusType),
+                borderRadius: BorderRadius.circular(
+                    theme.borderRadiuses.borderRadiusSmall),
+                border: Border.all(
+                  width: 1,
+                  color: borderColor(theme, status.statusType),
+                ),
+              ),
           child: ClipRRect(
             borderRadius:
                 BorderRadius.circular(theme.borderRadiuses.borderRadiusSmall),
@@ -46,9 +47,10 @@ class DesignTextFieldContainer extends StatelessWidget {
             status.statusText != null) ...[
           SizedBox(height: theme.spacings.spacing4),
           DesignTextFieldStatusBar(
-              iconData: statusIconData(status.statusType),
-              color: statusBarColor(theme),
-              text: status.statusText!),
+            iconData: statusIconData(status.statusType),
+            color: statusBarColor(theme),
+            text: status.statusText!,
+          ),
         ]
       ],
     );
@@ -56,7 +58,6 @@ class DesignTextFieldContainer extends StatelessWidget {
 
   IconData statusIconData(DesignTextFieldStatusType status) {
     switch (status) {
-      // TODO: replace icons with tokens
       case DesignTextFieldStatusType.checking:
         return Icons.search;
       case DesignTextFieldStatusType.error:

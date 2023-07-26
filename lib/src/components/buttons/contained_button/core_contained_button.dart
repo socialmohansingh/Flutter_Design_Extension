@@ -10,6 +10,8 @@ class CoreContainedButton extends StatelessWidget {
   final double height;
   final IconData? leftIcon;
   final IconData? rightIcon;
+  final Widget? leftIconWidget;
+  final Widget? rightIconWidget;
   final void Function()? onPressed;
 
   const CoreContainedButton({
@@ -17,10 +19,13 @@ class CoreContainedButton extends StatelessWidget {
     required this.height,
     this.leftIcon,
     this.rightIcon,
+    this.leftIconWidget,
+    this.rightIconWidget,
     this.onPressed,
     Key? key,
   })  : assert(
-          !(leftIcon != null && rightIcon != null),
+          !((leftIcon != null || leftIconWidget != null) &&
+              (rightIcon != null || rightIconWidget != null)),
           'Please specify only one of the icons inside buttons.',
         ),
         super(key: key);
@@ -37,8 +42,8 @@ class CoreContainedButton extends StatelessWidget {
         onPressed: onPressed,
         style: CoreButtonStyle(
           theme: theme,
-          hasLeftIcon: leftIcon != null,
-          hasRightIcon: rightIcon != null,
+          hasLeftIcon: leftIcon != null || leftIconWidget != null,
+          hasRightIcon: rightIcon != null || rightIconWidget != null,
           backgroundColor: MaterialStateProperty.resolveWith(
             (states) => resolveMaterialState(
               materialStateColorMap: materialStateColorMap,
@@ -56,6 +61,8 @@ class CoreContainedButton extends StatelessWidget {
           label: label,
           leftIcon: leftIcon,
           rightIcon: rightIcon,
+          leftIconWidget: leftIconWidget,
+          rightIconWidget: rightIconWidget,
         ),
       ),
     );
