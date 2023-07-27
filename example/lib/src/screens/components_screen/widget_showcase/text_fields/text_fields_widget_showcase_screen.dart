@@ -224,7 +224,37 @@ class _TextFieldsWidgetShowcaseScreenState
           textEditingController: TextEditingController(),
           onTimePicked: (TimeOfDay pickedTime) {},
         ),
+        SizedBox(height: theme.spacings.spacing16),
+        Text(
+          'Multiple Selectors',
+          style: theme.textStyles.heading3_500,
+        ),
         SizedBox(height: theme.spacings.spacing8),
+        DesignMultiSelectorDialogTextField(
+          placeholderText: "Multi selecter Dialog",
+          searchable: true,
+          items: [
+            MultiSelectItem("A", "A"),
+            MultiSelectItem("B", "B"),
+            MultiSelectItem("C", "C")
+          ],
+          isDismissible: true,
+          onConfirm: (p0) {},
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        DesignMultiSelectorBottomSheetTextField<DemoClass>(
+          placeholderText: "Multi selecter bottom sheet",
+          searchable: true,
+          items: [
+            MultiSelectItem(DemoClass("AAAA"), "AAAA"),
+            MultiSelectItem(DemoClass("BBBB"), "BBBB"),
+            MultiSelectItem(DemoClass("CCCC"), "CCCC")
+          ],
+          isDismissible: true,
+          onConfirm: (p0) {},
+          initialValue: [],
+        ),
+        SizedBox(height: theme.spacings.spacing16),
         Text(
           'Pickers',
           style: theme.textStyles.heading3_500,
@@ -232,10 +262,9 @@ class _TextFieldsWidgetShowcaseScreenState
         SizedBox(height: theme.spacings.spacing8),
         DesignSingleColumnPickerTextField<DemoClass>(
           placeholderText: 'Single Column Picker',
-          status: DesignTextFieldStatus(
-              statusType: DesignTextFieldStatusType.active),
-          textEditingController: TextEditingController(),
           data: [DemoClass("M"), DemoClass("N"), DemoClass("O")],
+          textEditingController: TextEditingController(),
+          selectData: DemoClass("N"),
           buildTitle: (data, position) {
             return data.title;
           },
@@ -252,14 +281,13 @@ class _TextFieldsWidgetShowcaseScreenState
         SizedBox(height: theme.spacings.spacing8),
         DesignMultiColumnPickerTextField(
           placeholderText: 'Multiple Column Picker',
-          status: DesignTextFieldStatus(
-              statusType: DesignTextFieldStatusType.active),
-          textEditingController: TextEditingController(),
           data: const [
             ["M", "N", "O"],
             ["R", "S", "T"],
             ["A", "B", "C"],
           ],
+          suffix: ["", " A", " B"],
+          selectData: ["N", "T", "C"],
           onCancel: (isCancel) {
             print(isCancel);
           },

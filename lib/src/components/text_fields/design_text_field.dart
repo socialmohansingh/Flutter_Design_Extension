@@ -30,13 +30,13 @@ class DesignTextField extends StatefulWidget {
   final String placeholderText;
 
   /// status affects the visibility and contents of the bottom bar, as well as the colors of the Text Field
-  final DesignTextFieldStatus status;
+  late final DesignTextFieldStatus status;
 
   /// Basic TextEditingController
-  final TextEditingController textEditingController;
+  late final TextEditingController textEditingController;
 
   /// Basic FocusNode
-  final FocusNode focusNode;
+  late final FocusNode focusNode;
 
   /// Determines if the Text Field will have an obscure text or not
   final bool obscureText;
@@ -69,11 +69,11 @@ class DesignTextField extends StatefulWidget {
   final bool showLabelText;
   final int? maxLength;
   final MaxLengthEnforcement? maxLengthEnforcement;
-  const DesignTextField({
+  DesignTextField({
     required this.placeholderText,
-    required this.status,
-    required this.textEditingController,
-    required this.focusNode,
+    DesignTextFieldStatus? status,
+    TextEditingController? textEditingController,
+    FocusNode? focusNode,
     this.obscureText = false,
     this.autocorrect = false,
     this.showLabelText = true,
@@ -89,7 +89,13 @@ class DesignTextField extends StatefulWidget {
     this.maxLength,
     this.maxLengthEnforcement,
     super.key,
-  });
+  }) {
+    this.textEditingController =
+        textEditingController ?? TextEditingController();
+    this.status = status ??
+        DesignTextFieldStatus(statusType: DesignTextFieldStatusType.active);
+    this.focusNode = focusNode ?? FocusNode();
+  }
 
   @override
   State<DesignTextField> createState() => _DesignTextFieldState();

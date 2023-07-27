@@ -1,12 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
-import 'package:flutter_design_extension/src/components/picker/picker.dart';
-import 'package:flutter_design_extension/src/components/picker/style/picker_style.dart';
 
 class DesignSingleColumnPickerTextField<T> extends StatefulWidget {
   final String placeholderText;
-  final DesignTextFieldStatus status;
-  final TextEditingController textEditingController;
+  late final DesignTextFieldStatus status;
+  late final TextEditingController textEditingController;
   final List<T> data;
   final T? selectData;
   final String? suffix;
@@ -23,12 +21,12 @@ class DesignSingleColumnPickerTextField<T> extends StatefulWidget {
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
 
-  const DesignSingleColumnPickerTextField({
+  DesignSingleColumnPickerTextField({
     required this.placeholderText,
-    required this.status,
-    required this.textEditingController,
     required this.data,
     required this.buildTitle,
+    DesignTextFieldStatus? status,
+    TextEditingController? textEditingController,
     this.selectData,
     this.suffix,
     this.pickerStyle,
@@ -43,7 +41,15 @@ class DesignSingleColumnPickerTextField<T> extends StatefulWidget {
     this.decoration,
     this.showLabelText = true,
     super.key,
-  });
+  }) {
+    this.textEditingController =
+        textEditingController ?? TextEditingController();
+    this.status = status ??
+        DesignTextFieldStatus(statusType: DesignTextFieldStatusType.active);
+    if (selectData != null) {
+      this.textEditingController.text = buildTitle(selectData as T, -1);
+    }
+  }
 
   @override
   State<DesignSingleColumnPickerTextField> createState() =>
@@ -55,8 +61,6 @@ class _DesignSingleColumnPickerTextFieldState<T>
   TimeOfDay? time;
   @override
   Widget build(BuildContext context) {
-    widget.textEditingController.text =
-        time == null ? "" : time!.format(context);
     return Stack(
       children: [
         DesignTextField(
@@ -87,7 +91,13 @@ class _DesignSingleColumnPickerTextFieldState<T>
                   suffix: widget.suffix,
                   pickerStyle: widget.pickerStyle,
                   onChanged: widget.onChanged,
-                  onConfirm: widget.onConfirm,
+                  onConfirm: (data, position) {
+                    widget.textEditingController.text =
+                        widget.buildTitle(data, position);
+                    if (widget.onConfirm != null) {
+                      widget.onConfirm!(data, position);
+                    }
+                  },
                   onCancel: widget.onCancel,
                   overlapTabBar: widget.overlapTabBar,
                   buildTitle: widget.buildTitle,

@@ -5,8 +5,8 @@ import 'package:intl/intl.dart';
 class DesignDatePickerTextField extends StatefulWidget {
   final String placeholderText;
   final String dateFormat;
-  final DesignTextFieldStatus status;
-  final TextEditingController textEditingController;
+  late final DesignTextFieldStatus status;
+  late final TextEditingController textEditingController;
   final Function(DateTime pickedDate) onDatePicked;
   final BoxDecoration? decoration;
   final DateTime? currentDate;
@@ -19,11 +19,11 @@ class DesignDatePickerTextField extends StatefulWidget {
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
 
-  const DesignDatePickerTextField({
+  DesignDatePickerTextField({
     required this.placeholderText,
-    required this.status,
-    required this.textEditingController,
     required this.onDatePicked,
+    DesignTextFieldStatus? status,
+    TextEditingController? textEditingController,
     this.prefixIconData,
     this.prefixIconWidget,
     this.suffixIconWidget,
@@ -36,7 +36,12 @@ class DesignDatePickerTextField extends StatefulWidget {
     this.initialDate,
     this.lastDate,
     super.key,
-  });
+  }) {
+    this.textEditingController =
+        textEditingController ?? TextEditingController();
+    this.status = status ??
+        DesignTextFieldStatus(statusType: DesignTextFieldStatusType.active);
+  }
 
   @override
   State<DesignDatePickerTextField> createState() =>
@@ -97,8 +102,8 @@ class _DesignDatePickerTextFieldState extends State<DesignDatePickerTextField> {
 
 class DesignTimePickerTextField extends StatefulWidget {
   final String placeholderText;
-  final DesignTextFieldStatus status;
-  final TextEditingController textEditingController;
+  late final DesignTextFieldStatus status;
+  late final TextEditingController textEditingController;
   final Function(TimeOfDay pickedTime) onTimePicked;
   final BoxDecoration? decoration;
   final TimeOfDay? currentTime;
@@ -108,11 +113,11 @@ class DesignTimePickerTextField extends StatefulWidget {
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
 
-  const DesignTimePickerTextField({
+  DesignTimePickerTextField({
     required this.placeholderText,
-    required this.status,
-    required this.textEditingController,
     required this.onTimePicked,
+    DesignTextFieldStatus? status,
+    TextEditingController? textEditingController,
     this.prefixIconData,
     this.prefixIconWidget,
     this.suffixIconWidget,
@@ -121,7 +126,12 @@ class DesignTimePickerTextField extends StatefulWidget {
     this.decoration,
     this.showLabelText = true,
     super.key,
-  });
+  }) {
+    this.textEditingController =
+        textEditingController ?? TextEditingController();
+    this.status = status ??
+        DesignTextFieldStatus(statusType: DesignTextFieldStatusType.active);
+  }
 
   @override
   State<DesignTimePickerTextField> createState() =>

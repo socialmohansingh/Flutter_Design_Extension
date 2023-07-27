@@ -5,14 +5,15 @@ import 'package:flutter_design_extension/src/components/picker/style/picker_styl
 
 class DesignMultiColumnPickerTextField extends StatefulWidget {
   final String placeholderText;
-  final DesignTextFieldStatus status;
-  final TextEditingController textEditingController;
+  late final DesignTextFieldStatus status;
+  late final TextEditingController textEditingController;
   final List<List<String>> data;
   final List<String>? selectData;
   final List? suffix;
   final PickerStyle? pickerStyle;
   final void Function(List<String> res, List<int> position)? onChanged;
   final void Function(List<String> res, List<int> position)? onConfirm;
+  final String Function(List<String> res, List<int> position)? onDisplay;
   final void Function(bool isCancel)? onCancel;
   final bool overlapTabBar;
   final BoxDecoration? decoration;
@@ -22,11 +23,12 @@ class DesignMultiColumnPickerTextField extends StatefulWidget {
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
 
-  const DesignMultiColumnPickerTextField({
+  DesignMultiColumnPickerTextField({
     required this.placeholderText,
-    required this.status,
-    required this.textEditingController,
     required this.data,
+    DesignTextFieldStatus? status,
+    TextEditingController? textEditingController,
+    this.onDisplay,
     this.selectData,
     this.suffix,
     this.pickerStyle,
@@ -41,7 +43,17 @@ class DesignMultiColumnPickerTextField extends StatefulWidget {
     this.decoration,
     this.showLabelText = true,
     super.key,
-  });
+  }) {
+    this.textEditingController =
+        textEditingController ?? TextEditingController();
+    this.status = status ??
+        DesignTextFieldStatus(statusType: DesignTextFieldStatusType.active);
+    if (selectData != null && selectData!.isNotEmpty) {
+      this.textEditingController.text = this.onDisplay == null
+          ? selectData!.join(", ")
+          : this.onDisplay!(selectData!, []);
+    }
+  }
 
   @override
   State<DesignMultiColumnPickerTextField> createState() =>
@@ -53,8 +65,6 @@ class _DesignMultiColumnPickerTextFieldState
   TimeOfDay? time;
   @override
   Widget build(BuildContext context) {
-    widget.textEditingController.text =
-        time == null ? "" : time!.format(context);
     return Stack(
       children: [
         DesignTextField(
@@ -85,7 +95,17 @@ class _DesignMultiColumnPickerTextFieldState
                   suffix: widget.suffix,
                   pickerStyle: widget.pickerStyle,
                   onChanged: widget.onChanged,
-                  onConfirm: widget.onConfirm,
+                  onConfirm: (res, position) {
+                    if (widget.onDisplay != null) {
+                      widget.textEditingController.text =
+                          widget.onDisplay!(res, position);
+                    } else {
+                      widget.textEditingController.text = res.join(", ");
+                    }
+                    if (widget.onConfirm != null) {
+                      widget.onConfirm!(res, position);
+                    }
+                  },
                   onCancel: widget.onCancel,
                   overlapTabBar: widget.overlapTabBar,
                 );
