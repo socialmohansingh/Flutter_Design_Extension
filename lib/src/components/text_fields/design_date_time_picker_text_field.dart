@@ -45,11 +45,12 @@ class DesignDatePickerTextField extends StatefulWidget {
 
   @override
   State<DesignDatePickerTextField> createState() =>
-      _DesignDatePickerTextFieldState();
+      _DesignDatePickerTextFieldState(currentDate);
 }
 
 class _DesignDatePickerTextFieldState extends State<DesignDatePickerTextField> {
   DateTime? dateTime;
+  _DesignDatePickerTextFieldState(this.dateTime);
   @override
   Widget build(BuildContext context) {
     widget.textEditingController.text =
@@ -135,11 +136,12 @@ class DesignTimePickerTextField extends StatefulWidget {
 
   @override
   State<DesignTimePickerTextField> createState() =>
-      _DesignTimePickerTextFieldState();
+      _DesignTimePickerTextFieldState(currentTime);
 }
 
 class _DesignTimePickerTextFieldState extends State<DesignTimePickerTextField> {
   TimeOfDay? time;
+  _DesignTimePickerTextFieldState(this.time);
   @override
   Widget build(BuildContext context) {
     widget.textEditingController.text =

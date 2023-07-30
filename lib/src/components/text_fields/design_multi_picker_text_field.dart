@@ -62,7 +62,6 @@ class DesignMultiColumnPickerTextField extends StatefulWidget {
 
 class _DesignMultiColumnPickerTextFieldState
     extends State<DesignMultiColumnPickerTextField> {
-  TimeOfDay? time;
   @override
   Widget build(BuildContext context) {
     return Stack(

@@ -138,6 +138,11 @@ class _TextFieldsWidgetShowcaseScreenState
   final statusesTypesCheckingFocusNode = FocusNode();
   final statusesTypesCheckingTextEditingController = TextEditingController();
   Widget statusesTypes() {
+    var items = [
+      DemoClass("AAAA"),
+      DemoClass("BBBB"),
+      DemoClass("CCCC"),
+    ];
     return Column(
       children: [
         Text(
@@ -214,11 +219,13 @@ class _TextFieldsWidgetShowcaseScreenState
           status: DesignTextFieldStatus(
               statusType: DesignTextFieldStatusType.active),
           textEditingController: TextEditingController(),
+          currentDate: DateTime.now(),
           onDatePicked: (DateTime pickedDate) {},
         ),
         SizedBox(height: theme.spacings.spacing8),
         DesignTimePickerTextField(
           placeholderText: 'Time Picker',
+          currentTime: TimeOfDay.now(),
           status: DesignTextFieldStatus(
               statusType: DesignTextFieldStatusType.active),
           textEditingController: TextEditingController(),
@@ -238,6 +245,7 @@ class _TextFieldsWidgetShowcaseScreenState
             MultiSelectItem("B", "B"),
             MultiSelectItem("C", "C")
           ],
+          initialValue: ["A,", "C"],
           isDismissible: true,
           onConfirm: (p0) {},
         ),
@@ -246,13 +254,13 @@ class _TextFieldsWidgetShowcaseScreenState
           placeholderText: "Multi selecter bottom sheet",
           searchable: true,
           items: [
-            MultiSelectItem(DemoClass("AAAA"), "AAAA"),
-            MultiSelectItem(DemoClass("BBBB"), "BBBB"),
-            MultiSelectItem(DemoClass("CCCC"), "CCCC")
+            MultiSelectItem(items[0], "AAAA"),
+            MultiSelectItem(items[1], "BBBB"),
+            MultiSelectItem(items[2], "CCCC")
           ],
           isDismissible: true,
           onConfirm: (p0) {},
-          initialValue: [],
+          initialValue: [items[0], items[2]],
         ),
         SizedBox(height: theme.spacings.spacing16),
         Text(

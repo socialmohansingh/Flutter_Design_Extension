@@ -89,9 +89,27 @@ class DesignMultiSelectorDialogTextField<V> extends StatefulWidget {
         textEditingController ?? TextEditingController();
     this.status = status ??
         DesignTextFieldStatus(statusType: DesignTextFieldStatusType.active);
-    // if (selectData != null) {
-    //   this.textEditingController.text = buildTitle(selectData as V, -1);
-    // }
+    List<MultiSelectItem<V>?> displayItems = [];
+    displayItems = initialValue.map((e) {
+      final index = items.indexWhere((element) => e == element.value);
+      if (index >= 0) {
+        return items[index];
+      }
+      return null;
+    }).toList();
+    displayItems.removeWhere((element) => element == null);
+    String text = "";
+    if (displayItems.isNotEmpty) {
+      text = displayItems[0]!.label;
+    }
+    if (displayItems.length >= 2) {
+      text = "$text, ${displayItems[1]!.label}";
+    }
+
+    if (displayItems.length > 2) {
+      text = "$text, & ${displayItems.length - 2} more";
+    }
+    this.textEditingController.text = text;
   }
 
   @override
