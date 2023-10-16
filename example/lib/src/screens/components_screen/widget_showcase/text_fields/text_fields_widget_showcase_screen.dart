@@ -238,6 +238,34 @@ class _TextFieldsWidgetShowcaseScreenState
         ),
         SizedBox(height: theme.spacings.spacing8),
         DesignMultiSelectorDialogTextField(
+          placeholderText: "Single selecter Dialog",
+          searchable: true,
+          items: [
+            MultiSelectItem("A", "A"),
+            MultiSelectItem("B", "B"),
+            MultiSelectItem("C", "C")
+          ],
+          initialValue: ["A,", "C"],
+          isSingleSelectionEnabled: true,
+          isDismissible: true,
+          onConfirm: (p0) {},
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        DesignMultiSelectorBottomSheetTextField<DemoClass>(
+          placeholderText: "Single selecter bottom sheet",
+          searchable: true,
+          items: [
+            MultiSelectItem(items[0], "AAAA"),
+            MultiSelectItem(items[1], "BBBB"),
+            MultiSelectItem(items[2], "CCCC")
+          ],
+          isDismissible: true,
+          onConfirm: (p0) {},
+          isSingleSelectionEnabled: true,
+          initialValue: [items[0], items[2]],
+        ),
+        SizedBox(height: theme.spacings.spacing8),
+        DesignMultiSelectorDialogTextField(
           placeholderText: "Multi selecter Dialog",
           searchable: true,
           items: [
