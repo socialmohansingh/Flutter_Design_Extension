@@ -78,6 +78,7 @@ class MultiSelectBottomSheet<T> extends StatefulWidget
 
   /// Set the color of the check in the checkbox
   final Color? checkColor;
+  final bool isSingleSelecttionEnable;
 
   MultiSelectBottomSheet({
     required this.items,
@@ -103,6 +104,7 @@ class MultiSelectBottomSheet<T> extends StatefulWidget
     this.searchHintStyle,
     this.selectedItemsTextStyle,
     this.separateSelectedItems = false,
+    this.isSingleSelecttionEnable = false,
     this.checkColor,
   });
 
@@ -121,8 +123,12 @@ class _MultiSelectBottomSheetState<T> extends State<MultiSelectBottomSheet<T>> {
   @override
   void initState() {
     super.initState();
-    _selectedValues.addAll(widget.initialValue);
 
+    if (widget.isSingleSelecttionEnable && widget.initialValue.isNotEmpty) {
+      _selectedValues.add(widget.initialValue.first);
+    } else {
+      _selectedValues.addAll(widget.initialValue);
+    }
     for (int i = 0; i < _items.length; i++) {
       _items[i].selected = false;
       if (_selectedValues.contains(_items[i].value)) {
@@ -156,9 +162,15 @@ class _MultiSelectBottomSheetState<T> extends State<MultiSelectBottomSheet<T>> {
         controlAffinity: ListTileControlAffinity.leading,
         onChanged: (checked) {
           setState(() {
-            _selectedValues = widget.onItemCheckedChange(
-                _selectedValues, item.value, checked!);
+            _selectedValues = widget.onItemCheckedChange(_selectedValues,
+                item.value, checked!, widget.isSingleSelecttionEnable);
 
+            if (widget.isSingleSelecttionEnable) {
+              _items = _items.map((e) {
+                e.selected = false;
+                return e;
+              }).toList();
+            }
             if (checked) {
               item.selected = true;
             } else {
@@ -204,14 +216,20 @@ class _MultiSelectBottomSheetState<T> extends State<MultiSelectBottomSheet<T>> {
         ),
         selected: item.selected,
         onSelected: (checked) {
+          if (widget.isSingleSelecttionEnable) {
+            _items = _items.map((e) {
+              e.selected = false;
+              return e;
+            }).toList();
+          }
           if (checked) {
             item.selected = true;
           } else {
             item.selected = false;
           }
           setState(() {
-            _selectedValues = widget.onItemCheckedChange(
-                _selectedValues, item.value, checked);
+            _selectedValues = widget.onItemCheckedChange(_selectedValues,
+                item.value, checked, widget.isSingleSelecttionEnable);
           });
           if (widget.onSelectionChanged != null) {
             widget.onSelectionChanged!(_selectedValues);
@@ -345,7 +363,7 @@ class _MultiSelectBottomSheetState<T> extends State<MultiSelectBottomSheet<T>> {
                               ),
                         ),
                       ),
-                      SizedBox(width: 10),
+                      const SizedBox(width: 10),
                       Expanded(
                         child: TextButton(
                           onPressed: () {

@@ -3,10 +3,14 @@ import 'package:flutter_design_extension/src/components/multi_selector/utils/mul
 
 /// Contains common actions that are used by different multi select classes.
 class MultiSelectActions<T> {
-  List<T> onItemCheckedChange(
-      List<T> selectedValues, T itemValue, bool checked) {
+  List<T> onItemCheckedChange(List<T> selectedValues, T itemValue, bool checked,
+      bool isSingleCheckedEnabled) {
     if (checked) {
-      selectedValues.add(itemValue);
+      if (isSingleCheckedEnabled) {
+        selectedValues = [itemValue];
+      } else {
+        selectedValues.add(itemValue);
+      }
     } else {
       selectedValues.remove(itemValue);
     }

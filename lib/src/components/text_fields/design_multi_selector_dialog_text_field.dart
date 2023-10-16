@@ -42,6 +42,7 @@ class DesignMultiSelectorDialogTextField<V> extends StatefulWidget {
   final Widget? prefixIconWidget;
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
+  final bool isSingleSelectionEnabled;
 
   DesignMultiSelectorDialogTextField({
     required this.placeholderText,
@@ -81,6 +82,7 @@ class DesignMultiSelectorDialogTextField<V> extends StatefulWidget {
     this.searchHintStyle,
     this.selectedItemsTextStyle,
     this.separateSelectedItems = false,
+    this.isSingleSelectionEnabled = false,
     this.checkColor,
     required this.isDismissible,
     super.key,
@@ -190,6 +192,7 @@ class _DesignMultiSelectorDialogTextFieldState<V>
           searchable: widget.searchable ?? false,
           confirmText: widget.confirmText,
           cancelText: widget.cancelText,
+          isSingleEnabled: widget.isSingleSelectionEnabled,
           separateSelectedItems: widget.separateSelectedItems,
           onConfirm: (selected) {
             _selectedItems = selected;

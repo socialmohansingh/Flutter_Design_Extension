@@ -43,6 +43,7 @@ class DesignMultiSelectorBottomSheetTextField<V> extends StatefulWidget {
   final IconData? prefixIconData;
   final Widget? prefixIconWidget;
   final Widget? suffixIconWidget;
+  final bool isSingleSelectionEnabled;
   final DesignTextFieldSuffixType? suffixType;
 
   DesignMultiSelectorBottomSheetTextField({
@@ -55,6 +56,7 @@ class DesignMultiSelectorBottomSheetTextField<V> extends StatefulWidget {
     this.suffixType = DesignTextFieldSuffixType.dropDown,
     this.fieldDecoration,
     this.showLabelText = true,
+    this.isSingleSelectionEnabled = false,
     required this.items,
     this.title,
     this.buttonText,
@@ -170,7 +172,7 @@ class _DesignMultiSelectorBottomSheetTextFieldState<V>
         backgroundColor: widget.backgroundColor,
         barrierColor: widget.barrierColor,
         shape: widget.shape ??
-            RoundedRectangleBorder(
+            const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
             ),
         isScrollControlled: true,
@@ -194,6 +196,7 @@ class _DesignMultiSelectorBottomSheetTextFieldState<V>
             confirmText: widget.confirmText,
             separateSelectedItems: widget.separateSelectedItems,
             initialValue: _selectedItems,
+            isSingleSelecttionEnable: widget.isSingleSelectionEnabled,
             onConfirm: (selected) {
               _selectedItems = selected;
               List<MultiSelectItem<V>?> displayItems = [];
@@ -223,7 +226,11 @@ class _DesignMultiSelectorBottomSheetTextFieldState<V>
               }
               if (widget.onConfirm != null) widget.onConfirm!(selected);
             },
-            onSelectionChanged: widget.onSelectionChanged,
+            onSelectionChanged: (value) {
+              if (widget.onSelectionChanged != null) {
+                widget.onSelectionChanged!(value);
+              }
+            },
             searchable: widget.searchable,
             title: widget.title,
             initialChildSize: widget.initialChildSize,
@@ -231,7 +238,6 @@ class _DesignMultiSelectorBottomSheetTextFieldState<V>
             maxChildSize: widget.maxChildSize,
           );
         });
-    print(myVar.toString());
     if (myVar != null) {
       _selectedItems = myVar;
     }

@@ -78,6 +78,8 @@ class MultiSelectDialog<T> extends StatefulWidget with MultiSelectActions<T> {
   /// Set the color of the check in the checkbox
   final Color? checkColor;
 
+  final bool isSingleEnabled;
+
   MultiSelectDialog({
     required this.items,
     required this.initialValue,
@@ -102,6 +104,7 @@ class MultiSelectDialog<T> extends StatefulWidget with MultiSelectActions<T> {
     this.searchTextStyle,
     this.selectedItemsTextStyle,
     this.separateSelectedItems = false,
+    this.isSingleEnabled = false,
     this.checkColor,
   });
 
@@ -155,8 +158,13 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
         onChanged: (checked) {
           setState(() {
             _selectedValues = widget.onItemCheckedChange(
-                _selectedValues, item.value, checked!);
-
+                _selectedValues, item.value, checked!, widget.isSingleEnabled);
+            if (widget.isSingleEnabled) {
+              _items = _items.map((e) {
+                e.selected = false;
+                return e;
+              }).toList();
+            }
             if (checked) {
               item.selected = true;
             } else {
@@ -204,7 +212,7 @@ class _MultiSelectDialogState<T> extends State<MultiSelectDialog<T>> {
           }
           setState(() {
             _selectedValues = widget.onItemCheckedChange(
-                _selectedValues, item.value, checked);
+                _selectedValues, item.value, checked, widget.isSingleEnabled);
           });
           if (widget.onSelectionChanged != null) {
             widget.onSelectionChanged!(_selectedValues);

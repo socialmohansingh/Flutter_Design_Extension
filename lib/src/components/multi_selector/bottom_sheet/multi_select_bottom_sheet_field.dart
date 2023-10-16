@@ -398,7 +398,7 @@ class __MultiSelectBottomSheetFieldViewState<V>
         backgroundColor: widget.backgroundColor,
         barrierColor: widget.barrierColor,
         shape: widget.shape ??
-            RoundedRectangleBorder(
+            const RoundedRectangleBorder(
               borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
             ),
         isScrollControlled: true,
@@ -437,7 +437,6 @@ class __MultiSelectBottomSheetFieldViewState<V>
             maxChildSize: widget.maxChildSize,
           );
         });
-    print(myVar.toString());
     _selectedItems = myVar!;
   }
 
