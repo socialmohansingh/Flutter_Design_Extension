@@ -9,6 +9,8 @@ class DesignRadioListTile<T> extends StatelessWidget {
   final String title;
   final String? subtitle;
   final bool enabled;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subTitleTextStyle;
 
   const DesignRadioListTile(
       {required this.value,
@@ -17,6 +19,8 @@ class DesignRadioListTile<T> extends StatelessWidget {
       required this.title,
       this.subtitle,
       this.enabled = true,
+      this.titleTextStyle,
+      this.subTitleTextStyle,
       super.key});
 
   @override
@@ -44,6 +48,8 @@ class DesignRadioListTile<T> extends StatelessWidget {
               title: title,
               enabled: enabled,
               subtitle: subtitle,
+              titleTextStyle: titleTextStyle,
+              subTitleTextStyle: subTitleTextStyle,
             ),
           ],
         )

@@ -11,7 +11,8 @@ class DesignContainedButtonMedium extends StatelessWidget {
   final Widget? rightIconWidget;
 
   final void Function()? onPressed;
-
+  final TextStyle? style;
+  final MaterialStateProperty<TextStyle?>? textStyle;
   const DesignContainedButtonMedium({
     required this.label,
     this.leftIcon,
@@ -19,6 +20,8 @@ class DesignContainedButtonMedium extends StatelessWidget {
     this.onPressed,
     this.leftIconWidget,
     this.rightIconWidget,
+    this.style,
+    this.textStyle,
     super.key,
   }) : _buttonSize = DesignButtonSize.medium;
 
@@ -32,6 +35,8 @@ class DesignContainedButtonMedium extends StatelessWidget {
       rightIcon: rightIcon,
       leftIconWidget: leftIconWidget,
       rightIconWidget: rightIconWidget,
+      style: style,
+      textStyle: textStyle,
     );
   }
 }

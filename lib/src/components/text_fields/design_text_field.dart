@@ -69,6 +69,12 @@ class DesignTextField extends StatefulWidget {
   final bool showLabelText;
   final int? maxLength;
   final MaxLengthEnforcement? maxLengthEnforcement;
+  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
+
   DesignTextField({
     required this.placeholderText,
     DesignTextFieldStatus? status,
@@ -88,6 +94,11 @@ class DesignTextField extends StatefulWidget {
     this.decoration,
     this.maxLength,
     this.maxLengthEnforcement,
+    this.style,
+    this.labelStyle,
+    this.onChanged,
+    this.onSubmitted,
+    this.inputFormatters,
     super.key,
   }) {
     this.textEditingController =
@@ -159,6 +170,11 @@ class _DesignTextFieldState extends State<DesignTextField> {
                 focusNode: widget.focusNode,
                 onEditingComplete: widget.onEditingComplete,
                 keyboardType: widget.keyboardType,
+                style: widget.style,
+                labelStyle: widget.labelStyle,
+                onChanged: widget.onChanged,
+                onSubmitted: widget.onSubmitted,
+                inputFormatters: widget.inputFormatters,
               ),
             ),
             if (widget.suffixIconWidget != null)

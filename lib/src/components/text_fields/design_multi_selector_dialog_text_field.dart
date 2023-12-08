@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 
 class DesignMultiSelectorDialogTextField<V> extends StatefulWidget {
@@ -43,6 +44,11 @@ class DesignMultiSelectorDialogTextField<V> extends StatefulWidget {
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
   final bool isSingleSelectionEnabled;
+  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   DesignMultiSelectorDialogTextField({
     required this.placeholderText,
@@ -85,6 +91,11 @@ class DesignMultiSelectorDialogTextField<V> extends StatefulWidget {
     this.isSingleSelectionEnabled = false,
     this.checkColor,
     required this.isDismissible,
+    this.style,
+    this.labelStyle,
+    this.onChanged,
+    this.onSubmitted,
+    this.inputFormatters,
     super.key,
   }) {
     this.textEditingController =
@@ -142,6 +153,11 @@ class _DesignMultiSelectorDialogTextFieldState<V>
           prefixIconWidget: widget.prefixIconWidget,
           suffixIconWidget: widget.suffixIconWidget,
           textEditingController: widget.textEditingController,
+          style: widget.style,
+          labelStyle: widget.labelStyle,
+          onChanged: widget.onChanged,
+          onSubmitted: widget.onSubmitted,
+          inputFormatters: widget.inputFormatters,
           focusNode: FocusNode(),
         ),
         if (!(widget.status.statusType == DesignTextFieldStatusType.disabled ||

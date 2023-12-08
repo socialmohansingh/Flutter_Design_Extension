@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:flutter_design_extension/src/components/picker/picker.dart';
 import 'package:flutter_design_extension/src/components/picker/style/picker_style.dart';
@@ -22,6 +23,11 @@ class DesignMultiColumnPickerTextField extends StatefulWidget {
   final Widget? prefixIconWidget;
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
+  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final ValueChanged<String>? onChangedTextField;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   DesignMultiColumnPickerTextField({
     required this.placeholderText,
@@ -42,6 +48,11 @@ class DesignMultiColumnPickerTextField extends StatefulWidget {
     this.suffixType = DesignTextFieldSuffixType.dropDown,
     this.decoration,
     this.showLabelText = true,
+    this.style,
+    this.labelStyle,
+    this.onSubmitted,
+    this.onChangedTextField,
+    this.inputFormatters,
     super.key,
   }) {
     this.textEditingController =
@@ -76,6 +87,11 @@ class _DesignMultiColumnPickerTextFieldState
           prefixIconWidget: widget.prefixIconWidget,
           suffixIconWidget: widget.suffixIconWidget,
           textEditingController: widget.textEditingController,
+          style: widget.style,
+          labelStyle: widget.labelStyle,
+          onChanged: widget.onChangedTextField,
+          onSubmitted: widget.onSubmitted,
+          inputFormatters: widget.inputFormatters,
           focusNode: FocusNode(),
         ),
         if (!(widget.status.statusType == DesignTextFieldStatusType.disabled ||

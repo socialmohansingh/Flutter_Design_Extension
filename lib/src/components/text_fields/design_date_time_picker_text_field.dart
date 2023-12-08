@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 import 'package:intl/intl.dart';
 
@@ -18,6 +19,11 @@ class DesignDatePickerTextField extends StatefulWidget {
   final Widget? prefixIconWidget;
   final Widget? suffixIconWidget;
   final DesignTextFieldSuffixType? suffixType;
+  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   DesignDatePickerTextField({
     required this.placeholderText,
@@ -35,6 +41,11 @@ class DesignDatePickerTextField extends StatefulWidget {
     this.initialDatePickerMode = DatePickerMode.day,
     this.initialDate,
     this.lastDate,
+    this.style,
+    this.labelStyle,
+    this.onChanged,
+    this.onSubmitted,
+    this.inputFormatters,
     super.key,
   }) {
     this.textEditingController =
@@ -67,6 +78,11 @@ class _DesignDatePickerTextFieldState extends State<DesignDatePickerTextField> {
           prefixIconWidget: widget.prefixIconWidget,
           suffixIconWidget: widget.suffixIconWidget,
           textEditingController: widget.textEditingController,
+          style: widget.style,
+          labelStyle: widget.labelStyle,
+          onChanged: widget.onChanged,
+          onSubmitted: widget.onSubmitted,
+          inputFormatters: widget.inputFormatters,
           focusNode: FocusNode(),
         ),
         if (!(widget.status.statusType == DesignTextFieldStatusType.disabled ||

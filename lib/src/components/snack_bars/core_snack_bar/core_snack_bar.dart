@@ -37,6 +37,7 @@ class CoreSnackBar extends SnackBar {
   /// [onPressedAction] expects snackbar callback function.
   /// It must be provided when action based snackbar is used.
   final VoidCallback? onPressedAction;
+  final TextStyle? style;
 
   CoreSnackBar({
     required this.theme,
@@ -45,6 +46,7 @@ class CoreSnackBar extends SnackBar {
     required this.snackBarDuration,
     required this.actionLabel,
     this.onPressedAction,
+    this.style,
     super.key,
   })  : assert(
           _hasVariantActionButton(variant: variant)
@@ -66,7 +68,7 @@ class CoreSnackBar extends SnackBar {
           ),
           content: Text(
             snackBarText,
-            style: theme.textStyles.secondary_500,
+            style: style ?? theme.textStyles.secondary_500,
           ),
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(

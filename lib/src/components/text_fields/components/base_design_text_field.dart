@@ -17,6 +17,11 @@ class BaseDesignTextField extends StatelessWidget {
   final Function()? onEditingComplete;
   final TextInputType? keyboardType;
   final bool showLabelText;
+  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
 
   const BaseDesignTextField({
     required this.placeholderText,
@@ -28,11 +33,16 @@ class BaseDesignTextField extends StatelessWidget {
     required this.focusNode,
     this.maxLines,
     this.maxLength,
+    this.style,
+    this.labelStyle,
     this.maxLengthEnforcement,
     this.showLabelText = true,
     this.autocorrect = false,
     this.onEditingComplete,
     this.keyboardType,
+    this.onChanged,
+    this.onSubmitted,
+    this.inputFormatters,
     super.key,
   });
 
@@ -52,16 +62,20 @@ class BaseDesignTextField extends StatelessWidget {
       keyboardType: keyboardType,
       // use token
       enabled: enabled,
-      style: theme.textStyles.paragraph_400
-          .copyWith(color: theme.colors.neutral.black),
+      style: style ??
+          theme.textStyles.paragraph_400
+              .copyWith(color: theme.colors.neutral.black),
       controller: textEditingController,
       textInputAction: textInputAction,
-
+      onChanged: onChanged,
+      onSubmitted: onSubmitted,
+      inputFormatters: inputFormatters,
       decoration: InputDecoration(
         alignLabelWithHint: (maxLines ?? 0) > 1,
         labelText: showLabelText ? placeholderText : "",
         hintText: showLabelText ? "" : placeholderText,
-        labelStyle: theme.textStyles.paragraph_400.copyWith(color: labelColor),
+        labelStyle: labelStyle ??
+            theme.textStyles.paragraph_400.copyWith(color: labelColor),
         focusedBorder: InputBorder.none,
         enabledBorder: InputBorder.none,
         border: InputBorder.none,

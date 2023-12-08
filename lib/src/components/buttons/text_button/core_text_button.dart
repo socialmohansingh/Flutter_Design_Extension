@@ -13,7 +13,8 @@ class CoreTextButton extends StatelessWidget {
   final Widget? leftIconWidget;
   final Widget? rightIconWidget;
   final void Function()? onPressed;
-
+  final TextStyle? style;
+  final MaterialStateProperty<TextStyle?>? textStyle;
   const CoreTextButton({
     required this.label,
     required this.height,
@@ -22,6 +23,8 @@ class CoreTextButton extends StatelessWidget {
     this.leftIconWidget,
     this.rightIconWidget,
     this.onPressed,
+    this.style,
+    this.textStyle,
     Key? key,
   })  : assert(
           !((leftIcon != null || leftIconWidget != null) &&
@@ -41,6 +44,7 @@ class CoreTextButton extends StatelessWidget {
         onPressed: onPressed,
         style: CoreButtonStyle(
           theme: theme,
+          textStyle: textStyle,
           hasLeftIcon: leftIcon != null || leftIconWidget != null,
           hasRightIcon: rightIcon != null || rightIconWidget != null,
           backgroundColor: MaterialStateProperty.resolveWith(
@@ -58,6 +62,7 @@ class CoreTextButton extends StatelessWidget {
         ),
         child: CoreButtonContentRow(
           label: label,
+          style: style,
           leftIcon: leftIcon,
           rightIcon: rightIcon,
           leftIconWidget: leftIconWidget,

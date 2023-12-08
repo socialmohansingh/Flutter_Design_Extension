@@ -10,7 +10,8 @@ class DesignTextButtonSmall extends StatelessWidget {
   final Widget? leftIconWidget;
   final Widget? rightIconWidget;
   final void Function()? onPressed;
-
+  final TextStyle? style;
+  final MaterialStateProperty<TextStyle?>? textStyle;
   const DesignTextButtonSmall({
     required this.label,
     this.leftIcon,
@@ -18,6 +19,8 @@ class DesignTextButtonSmall extends StatelessWidget {
     this.leftIconWidget,
     this.rightIconWidget,
     this.onPressed,
+    this.style,
+    this.textStyle,
     super.key,
   }) : _buttonSize = DesignButtonSize.small;
 
@@ -31,6 +34,8 @@ class DesignTextButtonSmall extends StatelessWidget {
       rightIcon: rightIcon,
       leftIconWidget: leftIconWidget,
       rightIconWidget: rightIconWidget,
+      style: style,
+      textStyle: textStyle,
     );
   }
 }

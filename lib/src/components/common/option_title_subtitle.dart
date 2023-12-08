@@ -5,9 +5,16 @@ class OptionTitleSubtitle extends StatelessWidget {
   final String title;
   final bool enabled;
   final String? subtitle;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subTitleTextStyle;
 
   const OptionTitleSubtitle(
-      {required this.title, required this.enabled, this.subtitle, super.key});
+      {required this.title,
+      required this.enabled,
+      this.subtitle,
+      this.titleTextStyle,
+      this.subTitleTextStyle,
+      super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +25,11 @@ class OptionTitleSubtitle extends StatelessWidget {
       children: [
         Text(
           title,
-          style: theme.textStyles.paragraph_400.copyWith(
-            color: textColor(enabled, theme),
-            height: 1,
-          ),
+          style: titleTextStyle ??
+              theme.textStyles.paragraph_400.copyWith(
+                color: textColor(enabled, theme),
+                height: 1,
+              ),
         ),
         if (subtitle != null) ...[
           SizedBox(
@@ -29,10 +37,11 @@ class OptionTitleSubtitle extends StatelessWidget {
           ),
           Text(
             subtitle!,
-            style: theme.textStyles.secondary_400.copyWith(
-              color: textColor(enabled, theme),
-              height: 1,
-            ),
+            style: subTitleTextStyle ??
+                theme.textStyles.secondary_400.copyWith(
+                  color: textColor(enabled, theme),
+                  height: 1,
+                ),
           ),
         ],
       ],

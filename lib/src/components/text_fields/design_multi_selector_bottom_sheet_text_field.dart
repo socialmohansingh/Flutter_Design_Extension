@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_design_extension/flutter_design_extension.dart';
 
 class DesignMultiSelectorBottomSheetTextField<V> extends StatefulWidget {
@@ -45,7 +46,11 @@ class DesignMultiSelectorBottomSheetTextField<V> extends StatefulWidget {
   final Widget? suffixIconWidget;
   final bool isSingleSelectionEnabled;
   final DesignTextFieldSuffixType? suffixType;
-
+  final TextStyle? style;
+  final TextStyle? labelStyle;
+  final ValueChanged<String>? onChanged;
+  final ValueChanged<String>? onSubmitted;
+  final List<TextInputFormatter>? inputFormatters;
   DesignMultiSelectorBottomSheetTextField({
     required this.placeholderText,
     DesignTextFieldStatus? status,
@@ -89,6 +94,11 @@ class DesignMultiSelectorBottomSheetTextField<V> extends StatefulWidget {
     this.separateSelectedItems = false,
     this.checkColor,
     required this.isDismissible,
+    this.style,
+    this.labelStyle,
+    this.onChanged,
+    this.onSubmitted,
+    this.inputFormatters,
     super.key,
   }) {
     this.textEditingController =
@@ -146,6 +156,11 @@ class _DesignMultiSelectorBottomSheetTextFieldState<V>
           prefixIconWidget: widget.prefixIconWidget,
           suffixIconWidget: widget.suffixIconWidget,
           textEditingController: widget.textEditingController,
+          style: widget.style,
+          labelStyle: widget.labelStyle,
+          onChanged: widget.onChanged,
+          onSubmitted: widget.onSubmitted,
+          inputFormatters: widget.inputFormatters,
           focusNode: FocusNode(),
         ),
         if (!(widget.status.statusType == DesignTextFieldStatusType.disabled ||

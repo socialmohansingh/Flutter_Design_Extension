@@ -4,8 +4,9 @@ import 'package:flutter/material.dart';
 class DesignTag extends StatelessWidget {
   final String label;
   final DesignTagType tagType;
-
-  const DesignTag({required this.label, required this.tagType, super.key});
+  final TextStyle? style;
+  const DesignTag(
+      {required this.label, required this.tagType, this.style, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +26,12 @@ class DesignTag extends StatelessWidget {
               child: Center(
                 child: Text(
                   label,
-                  style: TextStyleTokens(
-                    textDirection: context.getCurrentLanguageDirection(),
-                  ).caption_700.copyWith(color: tagStyle.fgColor, height: 1),
+                  style: style ??
+                      TextStyleTokens(
+                        textDirection: context.getCurrentLanguageDirection(),
+                      )
+                          .caption_700
+                          .copyWith(color: tagStyle.fgColor, height: 1),
                 ),
               ),
             ),

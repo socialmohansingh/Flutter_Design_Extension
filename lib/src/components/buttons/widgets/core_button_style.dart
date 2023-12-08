@@ -5,7 +5,7 @@ class CoreButtonStyle extends ButtonStyle {
   final DesignTokensThemeExtension theme;
   final bool hasLeftIcon; // adds padding in case of leftIcon present
   final bool hasRightIcon; // adds padding  in case of rightIcon present
-
+  final MaterialStateProperty<TextStyle?>? textStyle;
   CoreButtonStyle({
     required this.theme,
     required MaterialStateProperty<Color?>? backgroundColor,
@@ -13,6 +13,7 @@ class CoreButtonStyle extends ButtonStyle {
     required this.hasLeftIcon,
     required this.hasRightIcon,
     MaterialStateProperty<BorderSide?>? side,
+    this.textStyle,
   })  : assert(
           !(hasLeftIcon == true && hasRightIcon == true),
           'Please specify only one of the icons inside buttons.',
@@ -27,7 +28,8 @@ class CoreButtonStyle extends ButtonStyle {
               right: hasRightIcon == true ? theme.spacings.spacing12 : null,
             ),
           ),
-          textStyle: MaterialStatePropertyAll(theme.textStyles.buttonText),
+          textStyle: textStyle ??
+              MaterialStatePropertyAll(theme.textStyles.buttonText),
           backgroundColor: backgroundColor,
           foregroundColor: foregroundColor,
           side: side,

@@ -9,6 +9,8 @@ class DesignCheckBoxListTile extends StatelessWidget {
   final String? subtitle;
   final bool enabled;
   final bool tristate;
+  final TextStyle? titleTextStyle;
+  final TextStyle? subTitleTextStyle;
   const DesignCheckBoxListTile(
       {required this.value,
       required this.onChanged,
@@ -16,6 +18,8 @@ class DesignCheckBoxListTile extends StatelessWidget {
       this.subtitle,
       this.enabled = true,
       this.tristate = false,
+      this.titleTextStyle,
+      this.subTitleTextStyle,
       super.key});
 
   @override
@@ -43,6 +47,8 @@ class DesignCheckBoxListTile extends StatelessWidget {
               title: title,
               enabled: enabled,
               subtitle: subtitle,
+              titleTextStyle: titleTextStyle,
+              subTitleTextStyle: subTitleTextStyle,
             ),
           ],
         )

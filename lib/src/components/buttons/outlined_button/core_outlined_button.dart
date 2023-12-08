@@ -13,7 +13,8 @@ class CoreOutlinedButton extends StatelessWidget {
   final Widget? leftIconWidget;
   final Widget? rightIconWidget;
   final void Function()? onPressed;
-
+  final TextStyle? style;
+  final MaterialStateProperty<TextStyle?>? textStyle;
   const CoreOutlinedButton({
     required this.label,
     required this.height,
@@ -22,6 +23,8 @@ class CoreOutlinedButton extends StatelessWidget {
     this.onPressed,
     this.leftIconWidget,
     this.rightIconWidget,
+    this.style,
+    this.textStyle,
     Key? key,
   })  : assert(
           !((leftIcon != null || leftIconWidget != null) &&
@@ -41,6 +44,7 @@ class CoreOutlinedButton extends StatelessWidget {
         onPressed: onPressed,
         style: CoreButtonStyle(
           theme: theme,
+          textStyle: textStyle,
           hasLeftIcon: leftIcon != null || leftIconWidget != null,
           hasRightIcon: rightIcon != null || rightIconWidget != null,
           backgroundColor: MaterialStateProperty.resolveWith(
@@ -72,6 +76,7 @@ class CoreOutlinedButton extends StatelessWidget {
           rightIcon: rightIcon,
           leftIconWidget: leftIconWidget,
           rightIconWidget: rightIconWidget,
+          style: style,
         ),
       ),
     );
